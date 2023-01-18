@@ -7,29 +7,29 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4 validation__error-red" :errors="$errors" />
 
-        <div class="register__form">
-            <p class="register__form-title">Registration</p>
-            <div class="register__form-item">
+        <div class="auth-common__form">
+            <p class="auth-common__form-title">Registration</p>
+            <div class="auth-common__form-item">
         
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
                     <!-- Name -->
-                    <div class="register__name-wrap">
-                        <input id="name" class="register__name" type="text" name="name" placeholder="Username" value="{{ old('name') }}" required />
+                    <div class="auth-common__name-wrap">
+                        <input id="name" class="auth-common__name" type="text" name="name" placeholder="Username" value="{{ old('name') }}" required />
                     </div>
 
                     <!-- Email Address -->
-                    <div class="register__email-wrap">
-                        <input id="email" class="register__address" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required />
+                    <div class="auth-common__email-wrap">
+                        <input id="email" class="auth-common__address" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required />
                     </div>
 
                     <!-- Password -->
-                    <div class="register__pass-wrap">
-                        <input id="password" class="register__password" type="password" name="password" required autocomplete="new-password" placeholder="Password" />
+                    <div class="auth-common__pass-wrap">
+                        <input id="password" class="auth-common__password" type="password" name="password" required autocomplete="new-password" placeholder="Password" />
                     </div>
         
-                    <div class="register__submit-wrap">
-                        <button class="register__submit">登録</button>
+                    <div class="auth-common__submit-wrap">
+                        <button class="auth-common__submit">登録</button>
                     </div>
                 </form>
 
