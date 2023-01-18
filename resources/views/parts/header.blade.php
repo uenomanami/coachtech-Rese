@@ -1,10 +1,12 @@
 <div class="header" id="header">
-    <div class="header__menu" id="header__menu">
-        <span class="menu__line--top"></span>
-        <span class="menu__line--middle"></span>
-        <span class="menu__line--bottom"></span>
+    <div class="header__logo" id="header__logo" >
+        <div class="header__menu" id="header__menu">
+            <span class="menu__line--top"></span>
+            <span class="menu__line--middle"></span>
+            <span class="menu__line--bottom"></span>
+        </div>
+        <h1 class="header__title" id="header__title">Rese</h1>
     </div>
-    <h1 class="header__title" id="header__title">Rese</h1>
 
     <div class="header__nav" id="header__nav">
         @auth
@@ -21,5 +23,6 @@
         </ul>
         @endauth
     </div>
+    
 </div>
 
