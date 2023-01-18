@@ -11,15 +11,15 @@
     <div class="header__nav" id="header__nav">
         @auth
         <ul>
-            <li><a href="">Home</a></li>
-            <li><a href="">Logout</a></li>
-            <li><a href="">Mypage</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/logout">Logout</a></li>
+            <li><a href="/mypage">Mypage</a></li>
         </ul>
         @else
         <ul>
             <li><a href="">Home</a></li>
-            <li><a href="">Registration</a></li>
-            <li><a href="">Login</a></li>
+            <li><a href="/register">Registration</a></li>
+            <li><a href="/login">Login</a></li>
         </ul>
         @endauth
     </div>
