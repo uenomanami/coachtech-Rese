@@ -1,13 +1,12 @@
 body {
   background-color: rgb(238, 238, 238);
-  padding: 10px 80px;
 }
 
 .auth-common__form {
   width: 350px;
   border-radius: 5px;
   margin: 100px auto;
-  box-shadow: 2px 2px 2px -1px;
+  box-shadow: 1px 1px 3px -1px;
   z-index: 2;
 }
 
