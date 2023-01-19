@@ -11,4 +11,7 @@ class Area extends Model
 
     protected $fillable = ['name'];
 
+    public function shop(){
+        return $this->hasOne('App\Models\Store');
+    }
 }
