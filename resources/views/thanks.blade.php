@@ -11,15 +11,17 @@
   <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
 
 </head>
-<body>
-    <header name="logo" class="logo">
-        @include('parts.header')
-    </header>
 
-    <div class="thanks__box">
-      <p>会員登録ありがとうございます</p>
-      <a href="/login">ログインする</a>
-    </div>
-</body>
+<body>
+  <header name="logo" class="logo">
+    @include('parts.header')
+  </header>
+
+  <div class="thanks__box">
+    <p>会員登録ありがとうございます</p>
+    <a href="/login">ログインする</a>
+  </div>
+  
   <script src="{{ asset('js/header.js') }}"></script>
+</body>
 </html> 
