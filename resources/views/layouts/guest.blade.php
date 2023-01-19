@@ -23,7 +23,7 @@
         <div class="font-sans text-gray-900 antialiased">
             {{ $slot }}
         </div>
+        
+        <script src="{{ asset('js/header.js') }}"></script>
     </body>
-    <script src="{{ asset('js/header.js') }}"></script>
-
 </html>

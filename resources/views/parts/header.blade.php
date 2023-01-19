@@ -12,7 +12,11 @@
         @auth
         <ul>
             <li><a href="/">Home</a></li>
-            <li><a href="/logout">Logout</a></li>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <li><a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit()">Logout</a></li>
+                </form>
+
             <li><a href="/mypage">Mypage</a></li>
         </ul>
         @else
