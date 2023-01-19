@@ -44,12 +44,11 @@ main {
   margin-top: 10px;
 }
 
-.card-content__item a {
-  display: inline-block;
-  text-decoration: none;
+.card-content__item button {
   background-color: rgb(53, 96, 246);
+  border: none;
   border-radius: 5px;
   color: #fff;
   font-size: 14px;
-  padding: 8px 15px;
+  padding: 5px 15px;
 }

@@ -30,7 +30,9 @@
         <p class="card-content__area">{{ $store->getArea() }}</p>
         <p class="card-content__category">{{ $store->getCategory() }}</p>
         <div class="card-content__item">
-          <a href="/detail/{shop_id}">詳しくみる</a>
+          <form action="/detail/" method="get">
+            <button name="store_id" value="{{ $store->id }}" type="submit">詳しくみる</button>
+          </form>
           <!-- <button></button> -->
         </div>
       </div>
