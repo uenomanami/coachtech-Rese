@@ -15,6 +15,7 @@ use App\Http\Controllers\StoreController;
 */
 
 Route::get('/', [StoreController::class, 'index']);
+Route::get('/detail', [StoreController::class, 'detail'])->name('detail');
 
 Route::get('/thanks', function () {
     return view('thanks');

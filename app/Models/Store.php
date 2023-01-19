@@ -32,4 +32,14 @@ class Store extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public static function doSearch($store_id)
+    {
+        $query = self::query();
+        $query->where('id', '=', "$store_id");
+
+        $results = $query->first();;
+        return $results;
+    }
+
+
 }

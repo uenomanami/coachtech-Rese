@@ -13,4 +13,12 @@ class StoreController extends Controller
         $stores = Store::all();
         return view('index', ['stores'=>$stores]);
     }
+    public function detail(Request $request)
+    {
+        $store_id = $request->input('store_id');
+        
+        $store = Store::doSearch($store_id);
+
+        return view('detail', compact("store"));
+    }
 }
