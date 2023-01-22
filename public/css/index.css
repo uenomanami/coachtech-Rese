@@ -42,13 +42,21 @@ main {
 
 .card-content__item {
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+
 }
 
-.card-content__item button {
+.to-detail__button {
   background-color: rgb(53, 96, 246);
   border: none;
   border-radius: 5px;
   color: #fff;
   font-size: 14px;
   padding: 5px 15px;
+}
+
+.favorite__btn {
+  background-color: #fff;
+  border: none;
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,15 +32,33 @@
         <p class="card-content__category">{{ $store->getCategory() }}</p>
         <div class="card-content__item">
           <form action="/detail/" method="get">
-            <button name="store_id" value="{{ $store->id }}" type="submit">詳しくみる</button>
+            <button class="to-detail__button" name="store_id" value="{{ $store->id }}" type="submit">詳しくみる</button>
           </form>
+
+          @auth
+          @if (!Auth::user()->is_favorite($store->id))
+          <form action="/detail/favorite" method="get">
+            @csrf
+            <button type="submit" class="favorite__btn" name="store_id" value="{{ $store->id }}"><img
+                src="{{ asset('images/heart-gray.png') }}" alt=""></button>
+          </form>
+          @else
+          <form action="/detail/favorite/delete" method="get">
+            @csrf
+            <button type="submit" class="favorite__btn" name="store_id" value="{{ $store->id }}"><img
+                src="{{ asset('images/heart-red.png') }}" alt=""></button>
+          </form>
+          @endif
+          @endauth
+
           <!-- <button></button> -->
         </div>
       </div>
     </div>
     @endforeach
-</main>
+  </main>
 
   <script src="{{ asset('js/header.js') }}"></script>
 </body>
+
 </html>

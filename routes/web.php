@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\FavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,9 @@ use App\Http\Controllers\StoreController;
 */
 
 Route::get('/', [StoreController::class, 'index']);
-Route::get('/detail', [StoreController::class, 'detail'])->name('detail');
+Route::get('/detail', [StoreController::class, 'detail']);
+Route::get('/detail/favorite', [FavoriteController::class, 'create']);
+Route::get('/detail/favorite/delete', [FavoriteController::class, 'delete']);
 
 Route::get('/thanks', function () {
     return view('thanks');
@@ -25,4 +28,4 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

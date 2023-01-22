@@ -9,20 +9,29 @@ class Store extends Model
 {
     use HasFactory;
 
-    protected $guarded = array('id');
-    protected $fillable = ['name', 'category_id', 'area_id', 'description', 'image_url'];
+    protected $guarded = [
+        'id'
+    ];
 
-    public function getArea()//修正
+    protected $fillable = [
+        'name',
+        'category_id',
+        'area_id',
+        'description',
+        'image_url'
+    ];
+
+    public function getArea() //修正
     {
-        return '#'.optional($this->area)->name;
+        return '#' . optional($this->area)->name;
     }
 
-    public function getCategory()//修正
+    public function getCategory() //修正
     {
-        return '#'.optional($this->category)->name;
+        return '#' . optional($this->category)->name;
     }
 
-        public function Area()
+    public function Area()
     {
         return $this->belongsTo('App\Models\Area');
     }
@@ -35,11 +44,9 @@ class Store extends Model
     public static function doSearch($store_id)
     {
         $query = self::query();
-        $query->where('id', '=', "$store_id");
+        $query->where('id', '$store_id');
 
         $results = $query->first();;
         return $results;
     }
-
-
 }
