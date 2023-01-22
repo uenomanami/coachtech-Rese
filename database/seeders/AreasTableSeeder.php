@@ -295,6 +295,5 @@ class AreasTableSeeder extends Seeder
         ];
 
         Area::create($param);
-
     }
 }

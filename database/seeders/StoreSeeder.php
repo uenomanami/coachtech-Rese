@@ -14,6 +14,5 @@ class StoreSeeder extends Seeder
     public function run()
     {
         $this->call(StoresTableSeeder::class);
-
     }
 }

@@ -193,6 +193,5 @@ class StoresTableSeeder extends Seeder
             'image_url' => 'https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg'
         ];
         Store::create($param);
-
     }
 }
