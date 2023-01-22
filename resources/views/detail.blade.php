@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{$store->name}}</title>
 
-    <!-- Styles -->
+  <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/header.css') }}">
   <link rel="stylesheet" href="{{ asset('css/auth/common.css') }}">
@@ -14,6 +15,7 @@
 
 
 </head>
+
 <body>
   <header name="logo" class="logo">
     @include('parts.header')
@@ -51,7 +53,7 @@
             <option value="pm8h">20:30</option>
             <option value="pm9">21:00</option>
           </select>
-  
+
           <select name="reserve__num">
             <option value="1">1人</option>
             <option value="2">2人</option>
@@ -62,9 +64,9 @@
             <option value="7">７人</option>
             <option value="8">８人</option>
           </select>
-  
+
           <table>
-  
+
           </table>
 
         </div>
@@ -75,4 +77,5 @@
   </main>
   <script src="{{ asset('js/header.js') }}"></script>
 </body>
+
 </html>

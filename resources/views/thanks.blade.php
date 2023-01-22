@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +22,8 @@
     <p>会員登録ありがとうございます</p>
     <a href="/login">ログインする</a>
   </div>
-  
+
   <script src="{{ asset('js/header.js') }}"></script>
 </body>
-</html> 
+
+</html>
