@@ -32,7 +32,7 @@ class FavoriteController extends Controller
 
         if ($user->is_favorite($store_id)) {
             $query = Favorite::query();
-            $query->where('store_id', '$store_id')
+            $query->where('store_id', "$store_id")
                 ->where('user_id', $user->id)->delete();
         }
 
