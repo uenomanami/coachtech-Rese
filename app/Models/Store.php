@@ -44,9 +44,9 @@ class Store extends Model
     public static function doSearch($store_id)
     {
         $query = self::query();
-        $query->where('id', '$store_id');
+        $query->where('id', "$store_id");
 
-        $results = $query->first();;
+        $results = $query->first();
         return $results;
     }
 }

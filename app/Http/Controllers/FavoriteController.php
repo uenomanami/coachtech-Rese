@@ -16,7 +16,7 @@ class FavoriteController extends Controller
 
         if (!$user->is_favorite($store_id)) {
             $favorite = [
-                'store_id' => $request->store_id,
+                'store_id' => $store_id,
                 'user_id' => Auth::id(),
             ];
             Favorite::create($favorite);
