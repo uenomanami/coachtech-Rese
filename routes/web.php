@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StoreController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\ReserveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,10 @@ use App\Http\Controllers\FavoriteController;
 
 Route::get('/', [StoreController::class, 'index']);
 Route::get('/detail', [StoreController::class, 'detail']);
-Route::get('/detail/favorite', [FavoriteController::class, 'create']);
-Route::get('/detail/favorite/delete', [FavoriteController::class, 'delete']);
+Route::get('/favorite', [FavoriteController::class, 'create']);
+Route::get('/favorite/delete', [FavoriteController::class, 'delete']);
+Route::get('/detail/reserve', [ReserveController::class, 'create']);
+Route::get('/detail/reserve/delete', [ReserveController::class, 'delete']);
 
 Route::get('/thanks', function () {
     return view('thanks');

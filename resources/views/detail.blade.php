@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{$store->name}}</title>
+  <title>{{ $store->name }}</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
@@ -37,33 +37,42 @@
 
 
     <div class="detail__reserve">
-      <form action="" method="get">
-
+      <form action="/detail/reserve" method="get">
+        @csrf
         <div class="detail__reserve-wrap">
           <p class="reserve__title">予約</p>
-          <input type="date" class="reserve__date">
-          <select name="reserve__start-at">
-            <option value="pm5">17:00</option>
-            <option value="pm5h">17:30</option>
-            <option value="pm6">18:00</option>
-            <option value="pm6h">18:30</option>
-            <option value="pm7">19:00</option>
-            <option value="pm7h">19:30</option>
-            <option value="pm8">20:00</option>
-            <option value="pm8h">20:30</option>
-            <option value="pm9">21:00</option>
-          </select>
 
-          <select name="reserve__num">
+          <input type="date" class="reserve__date" name="date">
+          @if ($errors->has('date'))
+          <p class="validation__error-red">Error:{{$errors->first('date')}}</p>
+          @endif
+          <select name="start_at">
+            <option value="17:00">17:00</option>
+            <option value="17:30">17:30</option>
+            <option value="18:00">18:00</option>
+            <option value="18:30">18:30</option>
+            <option value="19:00">19:00</option>
+            <option value="19:30">19:30</option>
+            <option value="20:00">20:00</option>
+            <option value="20:30">20:30</option>
+            <option value="21:00">21:00</option>
+          </select>
+          @if ($errors->has('start_at'))
+          <p>Error:{{$errors->first('start_at')}}</p>
+          @endif
+          <select name="num_of_people">
             <option value="1">1人</option>
             <option value="2">2人</option>
-            <option value="3">３人</option>
+            <option value="3">3人</option>
             <option value="4">4人</option>
-            <option value="5">５人</option>
-            <option value="6">６人</option>
-            <option value="7">７人</option>
-            <option value="8">８人</option>
+            <option value="5">5人</option>
+            <option value="6">6人</option>
+            <option value="7">7人</option>
+            <option value="8">8人</option>
           </select>
+          @if ($errors->has('num_of_people'))
+          <p>Error:{{$errors->first('num_of_people')}}</p>
+          @endif
 
           <table>
 
@@ -71,11 +80,11 @@
 
         </div>
 
-        <button class="reserve__submit" type="submit">予約する</button>
+        <button class="reserve__submit" type="submit" name="store_id" value="{{ $store->id }}">予約する</button>
       </form>
     </div>
   </main>
-  <script src="{{ asset('js/header.js') }}"></script>
+  <script src=" {{ asset('js/header.js') }}"></script>
 </body>
 
 </html>
