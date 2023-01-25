@@ -22,6 +22,7 @@ Route::get('/favorite', [FavoriteController::class, 'create']);
 Route::get('/favorite/delete', [FavoriteController::class, 'delete']);
 Route::get('/detail/reserve', [ReserveController::class, 'create']);
 Route::get('/detail/reserve/delete', [ReserveController::class, 'delete']);
+Route::get('/search', [StoreController::class, 'search']);
 
 Route::get('/thanks', function () {
     return view('thanks');

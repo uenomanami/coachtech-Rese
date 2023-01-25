@@ -20,9 +20,42 @@
     @include('parts.header')
   </header>
 
+  <form action="/search" method="get">
+    <table class="shop__search">
+      <tr>
+        <td>
+          <div class="select-wrap">
+            <select name="area" onchange="submit(this.form)">
+              <option value="">All&nbsp;area</option>
+              @foreach( $areas as $area)
+              <option value="{{ $area->id }}">{{ $area->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="select-wrap">
+            <select name="category" onchange="submit(this.form)">
+              <option value="">All&nbsp;genre</option>
+              @foreach( $categories as $category)
+              <option value="{{ $category->id }}">{{ $category->name }}</option>
+              @endforeach
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="search_box">
+            <input type="text" name="store_name" placeholder="Search...">
+          </div>
+        </td>
+      </tr>
+    </table>
+    <input type="submit" class="search__submit">
+  </form>
+
   <main>
     @foreach ($stores as $store)
-    <div class="shop__card">
+    <div class=" shop__card">
       <div class="shop__card-img">
         <img src="{{ $store->image_url }}" alt="">
       </div>

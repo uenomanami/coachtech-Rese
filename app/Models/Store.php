@@ -41,12 +41,28 @@ class Store extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
-    public static function doSearch($store_id)
+    public static function toDetail($store_id)
     {
         $query = self::query();
         $query->where('id', "$store_id");
 
         $results = $query->first();
+        return $results;
+    }
+    public static function doSearch($area, $category, $content)
+    {
+        $query = self::query();
+        if (!empty($area)) {
+            $query->where('area_id', "$area");
+        }
+        if (!empty($category)) {
+            $query->where('category_id', "$category");
+        }
+        if (!empty($content)) {
+            $query->where('name', 'like', "%{$content}%");
+        }
+
+        $results = $query->get();
         return $results;
     }
 }

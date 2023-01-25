@@ -60,3 +60,85 @@ main {
   background-color: #fff;
   border: none;
 }
+
+/* 検索BOX */
+table.shop__search {
+  display: inline-block;
+  box-shadow: 1px 1px 3px -1px;
+  border-radius: 5px;
+  border-collapse: separate;
+  border-spacing: 0 5px;
+  background-color: #fff;
+  position: absolute;
+  top: 30px;
+  right: 80px;
+}
+
+table.shop__search td:not(:last-child){
+  border-right: solid 1px rgb(238, 238, 238);
+  width: 100px;
+}
+
+table.shop__search td {
+  position: relative;
+}
+
+.shop__search select {
+  position: relative;
+  appearance: none;
+  width: 100%;
+  padding: 0 10px;
+  border: none;
+  color: rgb(37, 37, 37);
+}
+
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.select-wrap:after {
+  position: absolute;
+  display: block;
+  content: '';
+  top: 7px;
+  right: 10px;
+  width: 12px;
+  height: 6px;
+  background: url(../images/select-icon.png) no-repeat center center;
+  background-size: 100% 100%;
+  transform: rotate(180deg);
+  pointer-events: none
+}
+
+.search_box {
+  display: inline-block;
+  position: relative;
+  border: none;
+}
+
+table .search_box::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: url(../images/search-icon.png) no-repeat center center / auto 100%;
+  display: inline-block;
+  position: absolute;
+  top: 11px;
+  left: 5px;
+}
+
+.search_box input {
+  padding: 10px 2px 10px 2em;
+  border: none;
+  width: 250px;
+}
+
+:focus {
+  outline: none;
+}
+
+
+.search__submit {
+  display: none;
+}
