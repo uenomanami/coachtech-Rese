@@ -37,7 +37,7 @@
 
 
     <div class="detail__reserve">
-      <form action="/detail/reserve" method="get">
+      <form action="{{ route('reserve', ['store_id' => $store->id ])}}" method="post">
         @csrf
         <div class="detail__reserve-wrap">
           <p class="reserve__title">予約</p>

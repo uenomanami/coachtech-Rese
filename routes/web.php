@@ -18,11 +18,12 @@ use App\Http\Controllers\ReserveController;
 
 Route::get('/', [StoreController::class, 'index']);
 Route::get('/detail', [StoreController::class, 'detail']);
-Route::get('/favorite', [FavoriteController::class, 'create']);
-Route::get('/favorite/delete', [FavoriteController::class, 'delete']);
-Route::get('/detail/reserve', [ReserveController::class, 'create']);
-Route::get('/detail/reserve/delete', [ReserveController::class, 'delete']);
+Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite');
+Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite.delete');
+Route::post('/detail/reserve', [ReserveController::class, 'create'])->name('reserve');
+Route::post('/detail/reserve/delete', [ReserveController::class, 'delete'])->name('reserve.delete');
 Route::get('/search', [StoreController::class, 'search']);
+Route::get('/mypage', [USerController::class, 'mypage']);
 
 Route::get('/thanks', function () {
     return view('thanks');

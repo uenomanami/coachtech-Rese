@@ -70,16 +70,18 @@
 
           @auth
           @if (!Auth::user()->is_favorite($store->id))
-          <form action="/favorite" method="get">
+          <form action="{{ route('favorite', ['store_id' => $store->id ])}}" method="post">
             @csrf
-            <button type="submit" class="favorite__btn" name="store_id" value="{{ $store->id }}"><img
-                src="{{ asset('images/heart-gray.png') }}" alt=""></button>
+            <button type="submit" class="favorite__btn">
+              <img src="{{ asset('images/heart-gray.png') }}" alt="">
+            </button>
           </form>
           @else
-          <form action="/favorite/delete" method="get">
+          <form action="{{ route('favorite.delete', ['store_id' => $store->id ])}}" method="post">
             @csrf
-            <button type="submit" class="favorite__btn" name="store_id" value="{{ $store->id }}"><img
-                src="{{ asset('images/heart-red.png') }}" alt=""></button>
+            <button type="submit" class="favorite__btn">
+              <img src="{{ asset('images/heart-red.png') }}" alt="">
+            </button>
           </form>
           @endif
           @endauth

@@ -29,7 +29,7 @@ class StoreController extends Controller
 
     public function detail(Request $request)
     {
-        $store_id = $request->input('store_id');
+        $store_id = $request->store_id;
         $store = Store::toDetail($store_id);
 
         return view('detail', ['store' => $store]);
@@ -38,9 +38,9 @@ class StoreController extends Controller
     public function search(Request $request)
     {
         $user = Auth::user();
-        $input_area = $request['area'];
-        $input_category = $request['category'];
-        $input_content = $request['store_name'];
+        $input_area = $request->area;
+        $input_category = $request->category;
+        $input_content = $request->store_name;
         $stores = Store::doSearch($input_area, $input_category, $input_content);
 
         $area = Area::all();
