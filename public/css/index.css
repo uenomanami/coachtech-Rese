@@ -4,9 +4,6 @@ body {
 
 main {
   padding: 20px 80px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
 }
 
 .shop__card {
@@ -16,6 +13,7 @@ main {
   background-color: #fff;
   display: inline-block;
   margin-bottom: 20px;
+  margin-right: 6px;
 }
 
 .shop__card-img img {
@@ -44,7 +42,6 @@ main {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
-
 }
 
 .to-detail__button {
@@ -54,11 +51,13 @@ main {
   color: #fff;
   font-size: 14px;
   padding: 5px 15px;
+  cursor: pointer;
 }
 
 .favorite__btn {
   background-color: #fff;
   border: none;
+  cursor: pointer;
 }
 
 /* 検索BOX */

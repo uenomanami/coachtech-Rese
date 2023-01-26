@@ -2,37 +2,42 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Area;
-use App\Models\Store;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
-
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Area;
+use App\Models\Category;
+use App\Models\Store;
+use App\Models\Reserve;
 
 class StoreController extends Controller
 {
     public function index()
     {
-        $stores = Store::all();
         $user = Auth::user();
         $area = Area::all();
         $category = Category::all();
+        $stores = Store::all();
         $param = [
-            'stores' => $stores,
             'user' => $user,
             'areas' => $area,
-            'categories' => $category
+            'categories' => $category,
+            'stores' => $stores
         ];
         return view('index', $param);
     }
 
     public function detail(Request $request)
     {
+        $user_id = Auth::id();
         $store_id = $request->store_id;
         $store = Store::toDetail($store_id);
+        $reserve = Reserve::searchReserve($user_id, $store_id);
 
-        return view('detail', ['store' => $store]);
+        $param = [
+            'store' => $store,
+            'reserves' => $reserve,
+        ];
+        return view('detail', $param);
     }
 
     public function search(Request $request)
@@ -47,12 +52,14 @@ class StoreController extends Controller
         $category = Category::all();
 
         $param = [
-            'stores' => $stores,
             'user' => $user,
             'areas' => $area,
-            'categories' => $category
+            'categories' => $category,
+            'stores' => $stores,
+            'input_area' => $input_area,
+            'input_category' => $input_category,
+            'input_content' => $input_content
         ];
-
         return view('index', $param);
     }
 }

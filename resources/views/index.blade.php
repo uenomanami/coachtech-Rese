@@ -10,9 +10,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/auth/common.css') }}">
   <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-
 </head>
 
 <body>
@@ -28,7 +26,8 @@
             <select name="area" onchange="submit(this.form)">
               <option value="">All&nbsp;area</option>
               @foreach( $areas as $area)
-              <option value="{{ $area->id }}">{{ $area->name }}</option>
+              <option value="{{ $area->id }}" @if(isset($input_area)) @if( $area->id == $input_area) selected @endif
+                @endif>{{ $area->name }}</option>
               @endforeach
             </select>
           </div>
@@ -38,14 +37,17 @@
             <select name="category" onchange="submit(this.form)">
               <option value="">All&nbsp;genre</option>
               @foreach( $categories as $category)
-              <option value="{{ $category->id }}">{{ $category->name }}</option>
+              <option value="{{ $category->id }}" @if(isset($input_category)) @if( $category->id == $input_category)
+                selected @endif @endif>{{
+                $category->name }}</option>
               @endforeach
             </select>
           </div>
         </td>
         <td>
           <div class="search_box">
-            <input type="text" name="store_name" placeholder="Search...">
+            <input type="text" name="store_name" placeholder="Search..."
+              value="@if (isset($input_content)) {{ $input_content }} @endif">
           </div>
         </td>
       </tr>

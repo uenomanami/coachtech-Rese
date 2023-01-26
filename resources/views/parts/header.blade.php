@@ -16,7 +16,6 @@
         @csrf
         <li><a href="route('logout')" onclick="event.preventDefault(); this.closest('form').submit()">Logout</a></li>
       </form>
-
       <li><a href="/mypage">Mypage</a></li>
     </ul>
     @else
@@ -27,5 +26,4 @@
     </ul>
     @endauth
   </div>
-  
 </div>

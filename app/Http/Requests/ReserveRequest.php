@@ -30,7 +30,7 @@ class ReserveRequest extends FormRequest
         return [
             'date' => 'required|date_format:Y-m-d|after:today',
             'start_at' => 'required|date_format:H:i',
-            'num_of_people' => 'required|integer',
+            'num_of_people' => 'required|integer'
         ];
     }
 

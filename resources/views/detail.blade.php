@@ -10,10 +10,7 @@
   <!-- Styles -->
   <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
   <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/auth/common.css') }}">
   <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
-
-
 </head>
 
 <body>
@@ -34,7 +31,6 @@
       </div>
       <p class="detail__store-description">{{ $store->description }}</p>
     </div>
-
 
     <div class="detail__reserve">
       <form action="{{ route('reserve', ['store_id' => $store->id ])}}" method="post">
@@ -57,6 +53,7 @@
             <option value="20:30">20:30</option>
             <option value="21:00">21:00</option>
           </select>
+
           @if ($errors->has('start_at'))
           <p>Error:{{$errors->first('start_at')}}</p>
           @endif
@@ -74,16 +71,39 @@
           <p>Error:{{$errors->first('num_of_people')}}</p>
           @endif
 
-          <table>
-
-          </table>
-
+          <div class="overflow-scroll">
+            @if (Auth::user()->is_reserve($store->id))
+            @foreach($reserves as $reserve)
+            <div class="detail__reserve-card">
+              <table>
+                <tr>
+                  <th>Shop</th>
+                  <td>{{ $reserve->getStorename() }}</td>
+                </tr>
+                <tr>
+                  <th>Date</th>
+                  <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}</td>
+                </tr>
+                <tr>
+                  <th>Time</th>
+                  <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}</td>
+                </tr>
+                <tr>
+                  <th>Number</th>
+                  <td>{{ $reserve->num_of_people }}人</td>
+                </tr>
+              </table>
+            </div>
+            @endforeach
+            @endif
+          </div>
         </div>
 
         <button class="reserve__submit" type="submit" name="store_id" value="{{ $store->id }}">予約する</button>
       </form>
     </div>
   </main>
+
   <script src=" {{ asset('js/header.js') }}"></script>
 </body>
 
