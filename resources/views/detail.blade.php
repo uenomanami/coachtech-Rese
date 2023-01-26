@@ -31,7 +31,7 @@
       </div>
       <p class="detail__store-description">{{ $store->description }}</p>
     </div>
-
+    @auth
     <div class="detail__reserve">
       <form action="{{ route('reserve', ['store_id' => $store->id ])}}" method="post">
         @csrf
@@ -102,6 +102,7 @@
         <button class="reserve__submit" type="submit" name="store_id" value="{{ $store->id }}">予約する</button>
       </form>
     </div>
+    @endauth
   </main>
 
   <script src=" {{ asset('js/header.js') }}"></script>
