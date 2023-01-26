@@ -49,6 +49,12 @@ class Store extends Model
         $results = $query->first();
         return $results;
     }
+
+    public function reserve()
+    {
+        return $this->hasOne('App\Models\Reserve');
+    }
+
     public static function doSearch($area, $category, $content)
     {
         $query = self::query();

@@ -19,4 +19,28 @@ class Reserve extends Model
         'num_of_people',
         'start_at',
     ];
+
+    public function getStorename()
+    {
+        return optional($this->store)->name;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+
+    public function store()
+    {
+        return $this->belongsTo('App\Models\Store');
+    }
+
+    public static function searchReserve($user_id, $store_id)
+    {
+        $query = self::query();
+        $query->where('user_id', "$user_id")->where('store_id', "$store_id");
+
+        $results = $query->get();
+        return $results;
+    }
 }

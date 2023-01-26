@@ -14,7 +14,6 @@ class ReserveController extends Controller
     {
         $user_id = Auth::id();
         $reserve = $request->all();
-
         $reserve = [
             'user_id' => $user_id,
             'store_id' => $reserve['store_id'],
@@ -24,5 +23,14 @@ class ReserveController extends Controller
         Reserve::create($reserve);
 
         return view('done');
+    }
+
+    public function delete(Request $request)
+    {
+        $reserve_id = $request->reserve_id;
+        $query = Reserve::query();
+        $query->where('id', "$reserve_id")->delete();
+
+        return back();
     }
 }

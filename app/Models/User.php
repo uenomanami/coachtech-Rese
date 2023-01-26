@@ -44,16 +44,26 @@ class User extends Authenticatable
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->hasMany('App\Models\Favorite');
     }
 
     public function favorite_stores()
     {
-        return $this->belongsToMany(Store::class, 'favorites', 'user_id', 'store_id');
+        return $this->belongsToMany('App\Models\Store', 'favorites', 'user_id', 'store_id');
     }
 
     public function is_favorite($store_id)
     {
         return $this->favorites()->where('store_id', $store_id)->exists();
+    }
+
+    public function reserves()
+    {
+        return $this->hasMany('App\Models\Reserve');
+    }
+
+    public function is_reserve($store_id)
+    {
+        return $this->reserves()->where('store_id', $store_id)->exists();
     }
 }
