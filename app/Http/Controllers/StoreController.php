@@ -30,7 +30,7 @@ class StoreController extends Controller
     {
         $user_id = Auth::id();
         $store_id = $request->store_id;
-        $store = Store::toDetail($store_id);
+        $store = Store::find($request->store_id);
         $reserve = Reserve::searchReserve($user_id, $store_id);
 
         $param = [

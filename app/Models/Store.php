@@ -41,15 +41,6 @@ class Store extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
-    public static function toDetail($store_id)
-    {
-        $query = self::query();
-        $query->where('id', "$store_id");
-
-        $results = $query->first();
-        return $results;
-    }
-
     public function reserve()
     {
         return $this->hasOne('App\Models\Reserve');
