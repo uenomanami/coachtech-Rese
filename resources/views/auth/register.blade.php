@@ -4,9 +4,6 @@
       @include('parts.header')
     </x-slot>
 
-    <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4 validation__error-red" :errors="$errors" />
-
     <div class="auth-common__form">
       <p class="auth-common__form-title">Registration</p>
       <div class="auth-common__form-item">
@@ -18,18 +15,33 @@
             <input id="name" class="auth-common__name" type="text" name="name" placeholder="Username"
               value="{{ old('name') }}" required />
           </div>
+          @error('name')
+          <div class="validation__error-red">
+            <p>Error:{{$message}}</p>
+          </div>
+          @enderror
 
           <!-- Email Address -->
           <div class="auth-common__email-wrap">
             <input id="email" class="auth-common__address" type="email" name="email" placeholder="Email"
               value="{{ old('email') }}" required />
           </div>
+          @error('email')
+          <div class="validation__error-red">
+            <p>Error:{{$message}}</p>
+          </div>
+          @enderror
 
           <!-- Password -->
           <div class="auth-common__pass-wrap">
             <input id="password" class="auth-common__password" type="password" name="password" required
               autocomplete="new-password" placeholder="Password" />
           </div>
+          @error('password')
+          <div class="validation__error-red">
+            <p>Error:{{$message}}</p>
+          </div>
+          @enderror
 
           <div class="auth-common__submit-wrap">
             <button class="auth-common__submit">登録</button>

@@ -8,9 +8,6 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <!-- Validation Errors -->
-    <x-auth-validation-errors class="mb-4 validation__error-red" :errors="$errors" />
-
     <div class="auth-common__form">
       <p class="auth-common__form-title">Login</p>
       <div class="auth-common__form-item">
@@ -29,6 +26,17 @@
             <input id="password" class="auth-common__password" type="password" name="password" required
               autocomplete="new-password" placeholder="Password" />
           </div>
+
+          @error('email')
+          <div class="validation__error-red">
+            <p>Error:{{$message}}</p>
+          </div>
+          @enderror
+          @error('password')
+          <div class="validation__error-red">
+            <p>Error:{{$message}}</p>
+          </div>
+          @enderror
 
           <div class="auth-common__submit-wrap">
             <button class="auth-common__submit">ログイン</button>
