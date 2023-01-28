@@ -14,7 +14,8 @@ main {
 
 .detail__store-name {
   font-size: 20px;
-  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .detail__store-name a {
@@ -35,12 +36,14 @@ main {
   margin-left: 3px;
 }
 
-.detail__store img {
-  width: 100%;
-  margin-bottom: 30px;
+.favorite__btn {
+  background-color: rgb(238, 238, 238);
+  border: none;
+  cursor: pointer;
 }
 
-.detail__store-name {
+.detail__store img {
+  width: 100%;
   margin-bottom: 30px;
 }
 

@@ -69,7 +69,15 @@
             <form action="/detail/" method="get">
               <button class="to-detail__button" name="store_id" value="{{ $store->id }}" type="submit">詳しくみる</button>
             </form>
-            <img class="card-content__img" src="{{ asset('images/heart-red.png') }}" alt="">
+
+            <form action="{{ route('favorite.delete', ['store_id' => $store->id ])}}" method="post"
+              onclick='return confirm("お気に入りを取り消しますか？")'>
+              @csrf
+              <button type="submit" class="favorite__btn">
+                <img src="{{ asset('images/heart-red.png') }}" alt="">
+              </button>
+            </form>
+
           </div>
         </div>
       </div>

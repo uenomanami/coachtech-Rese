@@ -154,3 +154,9 @@ table {
   padding: 5px 15px;
   cursor: pointer;
 }
+
+.favorite__btn {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}

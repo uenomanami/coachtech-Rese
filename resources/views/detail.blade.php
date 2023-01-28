@@ -21,9 +21,29 @@
   <main>
     <div class="detail__store">
       <div class="detail__store-name">
-        <a href="/" class="back__button">&lt;</a>
-        <h2>{{ $store->name }}</h2>
+        <div>
+          <a href="/" class="back__button">&lt;</a>
+          <h2>{{ $store->name }}</h2>
+        </div>
+        @auth
+        @if (!Auth::user()->is_favorite($store->id))
+        <form action="{{ route('favorite', ['store_id' => $store->id ])}}" method="post">
+          @csrf
+          <button type="submit" class="favorite__btn">
+            <img src="{{ asset('images/heart-border.png') }}" alt="">
+          </button>
+        </form>
+        @else
+        <form action="{{ route('favorite.delete', ['store_id' => $store->id ])}}" method="post">
+          @csrf
+          <button type="submit" class="favorite__btn">
+            <img src="{{ asset('images/heart-red.png') }}" alt="">
+          </button>
+        </form>
+        @endif
+        @endauth
       </div>
+
       <img src="{{ $store->image_url }}" alt="">
       <div class="detail__store-item">
         <p class="detail__store-area">{{ $store->getArea() }}</p>
