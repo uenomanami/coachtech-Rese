@@ -26,15 +26,16 @@ Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('fa
 
 Route::post('/detail/reserve', [ReserveController::class, 'create'])->name('reserve');
 Route::post('/detail/reserve/delete', [ReserveController::class, 'delete'])->name('reserve.delete');
+Route::post('/detail/reserve/update', [ReserveController::class, 'update'])->name('reserve.update');
 
-Route::get('/mypage', [UserController::class, 'mypage']);
+Route::get('/mypage', [UserController::class, 'mypage'])->middleware('auth');;
 
 Route::get('/thanks', function () {
     return view('thanks');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
+// Route::get('/register', function () {
+//     return view('register');
+// })->middleware(['auth'])->name('register');
 
 require __DIR__ . '/auth.php';

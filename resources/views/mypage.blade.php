@@ -24,13 +24,16 @@
       <h2>予約状況</h2>
       @foreach( $reserves as $key => $reserve)
       <div class="mypage__reserve-card">
-        <form action="{{ route('reserve.delete', ['reserve_id' => $reserve->id ])}}" method="post"
-          onclick='return confirm("予約を取り消しますか？")'>
+        <div class="reserve-card__title">
+          <p>予約&nbsp;{{ $key+1 }}</p>
+          <form action="{{ route('reserve.delete', ['reserve_id' => $reserve->id ])}}" method="post">
+            @csrf
+            <button type="sumbit" onclick='return confirm("予約を取り消しますか？")'><img src="{{ asset('images/batu.png')}}"
+                alt=""></button>
+          </form>
+        </div>
+        <form action="{{ route('reserve.update', ['reserve_id' => $reserve->id ])}}" method="post">
           @csrf
-          <div class="reserve-card__title">
-            <p>予約&nbsp;{{ $key+1 }}</p>
-            <button type="sumbit"><img src="{{ asset('images/batu.png')}}" alt=""></button>
-          </div>
           <table>
             <tr>
               <th>Shop</th>
@@ -38,17 +41,49 @@
             </tr>
             <tr>
               <th>Date</th>
-              <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}</td>
+              <td>{{
+                \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}</td>
+              <td class="reserve-date" id="reserve-date__change">→&nbsp;
+                <input type="date" class="reserve__date" name="date">
+              </td>
             </tr>
             <tr>
               <th>Time</th>
-              <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}</td>
+              <td id="reserve-time">{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}</td>
+              <td>→&nbsp;
+                <select name="start_at">
+                  <option value="17:00">17:00</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:00">18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option>
+                  <option value="20:00">20:00</option>
+                  <option value="20:30">20:30</option>
+                  <option value="21:00">21:00</option>
+                </select>
+              </td>
             </tr>
             <tr>
               <th>Number</th>
               <td>{{ $reserve->num_of_people }}人</td>
+              <td>→&nbsp;
+                <select name="num_of_people">
+                  <option value="1">1人</option>
+                  <option value="2">2人</option>
+                  <option value="3">3人</option>
+                  <option value="4">4人</option>
+                  <option value="5">5人</option>
+                  <option value="6">6人</option>
+                  <option value="7">7人</option>
+                  <option value="8">8人</option>
+                </select>
+              </td>
             </tr>
           </table>
+          <div class="reserve-card__change" id="reserve-card__change">
+            <button type="submit" onclick='return confirm("予約を変更しますか？")'>予約内容を変更</button>
+          </div>
         </form>
       </div>
       @endforeach
@@ -85,6 +120,7 @@
     </div>
   </main>
   <script src=" {{ asset('js/header.js') }}"></script>
+  <script src=" {{ asset('js/mypage.js') }}"></script>
 </body>
 
 </html>

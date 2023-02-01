@@ -25,6 +25,17 @@ class ReserveController extends Controller
         return view('done');
     }
 
+    public function update(ReserveRequest $request)
+    {
+        unset($request->_token);
+        $reserve = [
+            'num_of_people' => $request->num_of_people,
+            'start_at' => $request->date . " " . $request->start_at,
+        ];
+        Reserve::find($request->reserve_id)->update($reserve);
+        return back();
+    }
+
     public function delete(Request $request)
     {
         Reserve::find($request->reserve_id)->delete();

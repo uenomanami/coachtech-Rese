@@ -13,7 +13,7 @@ class ReserveRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'detail/reserve') {
+        if ($this->path() == 'detail/reserve' or $this->path() == 'detail/reserve/update') {
             return true;
         } else {
             return false;
