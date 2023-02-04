@@ -43,4 +43,13 @@ class Reserve extends Model
         $results = $query->get();
         return $results;
     }
+
+    public static function userReserve($user_id)
+    {
+        $query = self::query();
+        $query->where('user_id', "$user_id");
+
+        $results = $query->get();
+        return $results;
+    }
 }
