@@ -5,6 +5,7 @@ use App\Http\Controllers\StoreController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,15 +19,22 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', [StoreController::class, 'index']);
-Route::get('/detail', [StoreController::class, 'detail']);
 Route::get('/search', [StoreController::class, 'search']);
 
 Route::post('/favorite', [FavoriteController::class, 'create'])->name('favorite');
 Route::post('/favorite/delete', [FavoriteController::class, 'delete'])->name('favorite.delete');
 
-Route::post('/detail/reserve', [ReserveController::class, 'create'])->name('reserve');
-Route::post('/detail/reserve/delete', [ReserveController::class, 'delete'])->name('reserve.delete');
-Route::post('/detail/reserve/update', [ReserveController::class, 'update'])->name('reserve.update');
+Route::prefix('detail')->group(function () {
+    Route::get('', [StoreController::class, 'detail']);
+
+    Route::prefix('reserve')->group(function () {
+        Route::post('', [ReserveController::class, 'create'])->name('reserve');
+        Route::post('delete', [ReserveController::class, 'delete'])->name('reserve.delete');
+        Route::post('update', [ReserveController::class, 'update'])->name('reserve.update');
+    });
+
+    Route::post('comment', [CommentController::class, 'create'])->name('comment');
+});
 
 Route::get('/mypage', [UserController::class, 'mypage'])->middleware('auth');;
 

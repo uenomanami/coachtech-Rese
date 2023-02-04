@@ -19,6 +19,7 @@
   </header>
 
   <main>
+    {{-- 店舗詳細画面 --}}
     <div class="detail__store">
       <div class="detail__store-name">
         <div>
@@ -51,6 +52,8 @@
       </div>
       <p class="detail__store-description">{{ $store->description }}</p>
     </div>
+
+    {{-- 予約画面 --}}
     @auth
     <div class="detail__reserve">
       <form action="{{ route('reserve', ['store_id' => $store->id ])}}" method="post">
@@ -124,6 +127,64 @@
     </div>
     @endauth
   </main>
+
+  {{-- レビュー --}}
+  <div class="detail__store-comment">
+    <h2 class="detail__store-comment">レビュー</h2>
+
+    {{-- 評価機能の表示の有無の判定 --}}
+    @if ($store->is_reserve($store->id, $user_id) != null && !$store->is_userComment($store->id, $user_id))
+    <div class="store-comment__wrap">
+      <form action=" {{ route('comment', ['store_id'=> $store->id ])}}" method="post">
+        @csrf
+        <div class="store-comment__star">
+          <input id="star5" type="radio" name="star" value="5">
+          <label for="star5">★</label>
+          <input id="star4" type="radio" name="star" value="4">
+          <label for="star4">★</label>
+          <input id="star3" type="radio" name="star" value="3">
+          <label for="star3">★</label>
+          <input id="star2" type="radio" name="star" value="2">
+          <label for="star2">★</label>
+          <input id="star1" type="radio" name="star" value="1">
+          <label for="star1">★</label>
+        </div>
+        @if ($errors->has('star'))
+        <p class="validation__error-red">Error:{{$errors->first('star')}}</p>
+        @endif
+        <textarea class="store-comment__comment" name="comment" rows="3"></textarea>
+        @if ($errors->has('comment'))
+        <p class="validation__error-red">Error:{{$errors->first('comment')}}</p>
+        @endif
+        <button type="submit">投稿する</button>
+      </form>
+    </div>
+    @endif
+
+    {{-- レビューの有無の判定 --}}
+    @if($store->is_comments($store->id) != null)
+    @foreach($comments as $comment)
+    <div class="detail__comment-item">
+      <div class="detail__comment-wrap">
+        <div class="detail__comment-star">
+          @for($i = 1; $i < 6; $i++) @if($i <=$comment->star)
+            <span class="detail__comment-star--yellow">★</span>
+            @else
+            <span class="detail__comment-star--gray">★</span>
+            @endif
+            @endfor
+        </div>
+        <p class="detail__comment-date">{{ \Carbon\Carbon::createFromTimeString($comment->created_at)->format('Y-m-d')
+          }}</p>
+      </div>
+      <p class="detail__comment-name">{{ $comment->getUsername() }}</p>
+      <p class="detail__comment-comment">{{ $comment->comment }}</p>
+    </div>
+    @endforeach
+    @else
+    <p>まだレビューはありません</p>
+    @endif
+  </div>
 
   <script src=" {{ asset('js/header.js') }}"></script>
 </body>

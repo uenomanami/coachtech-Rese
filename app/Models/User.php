@@ -66,4 +66,14 @@ class User extends Authenticatable
     {
         return $this->reserves()->where('store_id', $store_id)->exists();
     }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Models\Comment');
+    }
+
+    public function is_comment($store_id, $user_id)
+    {
+        return $this->comments()->where('store_id', $store_id)->where('user_id', $user_id)->exists();
+    }
 }

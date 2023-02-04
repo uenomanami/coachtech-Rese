@@ -8,6 +8,7 @@ use App\Models\Area;
 use App\Models\Category;
 use App\Models\Store;
 use App\Models\Reserve;
+use App\Models\Comment;
 
 class StoreController extends Controller
 {
@@ -32,10 +33,13 @@ class StoreController extends Controller
         $store_id = $request->store_id;
         $store = Store::find($request->store_id);
         $reserve = Reserve::searchReserve($user_id, $store_id);
+        $comment = Comment::searchComment($store_id);
 
         $param = [
+            'user_id' => $user_id,
             'store' => $store,
             'reserves' => $reserve,
+            'comments' => $comment
         ];
         return view('detail', $param);
     }

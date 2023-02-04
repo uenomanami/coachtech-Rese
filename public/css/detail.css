@@ -4,12 +4,11 @@ body {
 
 main {
   margin: 30px 80px;
-  position: absolute;
-  display: flex;
 }
-
+/* 詳細 */
 .detail__store {
   width: 500px;
+  display: inline-block;
 }
 
 .detail__store-name {
@@ -62,15 +61,17 @@ main {
   font-size: 14px;
 }
 
+/* 予約 */
 .detail__reserve {
   width: 500px;
   height: 630px;
   background-color: rgb(53, 96, 246);
   box-shadow: 1px 1px 3px -1px;
   border-radius: 4px;
-  position: relative;
-  left: 100px;
-  top: -95px;
+  position: absolute;
+  margin-left: 100px; 
+  margin-top: -80px;
+  display: inline-block;
 }
 
 .detail__reserve-wrap {
@@ -149,4 +150,105 @@ main {
   color: rgb(241, 60, 60);
   font-weight: bold;
   margin-top: 15px;
+}
+
+/* レビュー */
+
+.detail__store-comment {
+  margin: 100px auto 30px;
+  text-align: center;
+}
+
+.detail__store-comment h2 {
+  font-size: 20px;
+}
+
+.store-comment__wrap {
+  margin-bottom: 40px;
+}
+
+.store-comment__star {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+}
+
+.store-comment__star input[type=radio] {
+  display: none;
+}
+
+.store-comment__star label {
+  position: relative;
+  padding: 0 5px;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 35px;
+}
+
+.store-comment__star label:hover {
+  color: #ffcc00;
+}
+
+.store-comment__star label:hover~label {
+  color: #ffcc00;
+}
+
+.store-comment__star input[type=radio]:checked~label {
+  color: #ffcc00;
+}
+
+.store-comment__comment {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  width: 70%;
+}
+
+.detail__store-comment button {
+  display: block;
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin: 10px auto 0;
+}
+
+.detail__comment-item {
+  padding: 30px;
+  border-bottom: 1px solid #a09a9a;
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.detail__comment-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail__comment-date {
+  font-size: 14px;
+}
+
+.detail__comment-name {
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.detail__comment-comment {
+  margin-top: 10px;
+}
+
+.detail__comment-star--yellow {
+  font-size: 24px;
+  color: #ffcc00;
+}
+.detail__comment-star--gray {
+  font-size: 24px;
+  color: #ccc;
 }
