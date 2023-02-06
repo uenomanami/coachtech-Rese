@@ -48,7 +48,7 @@ class Store extends Model
 
     public function is_reserve($store_id, $user_id)
     {
-        return $this->reserves()->where('store_id', $store_id)->where('user_id', $user_id)->exists();
+        return $this->reserves()->where('store_id', $store_id)->where('user_id', $user_id)->where('start_at', '<', date(now()))->exists();
     }
 
     public static function doSearch($area, $category, $content)
