@@ -11,6 +11,11 @@
   padding: 30px 80px;
 }
 
+@media screen and (max-width: 768px) {
+  .header__logo {
+    padding: 20px 10px;
+  }
+}
 .header__menu {
   display: inline-block;
   width: 32px;
@@ -83,7 +88,7 @@
 
 .header__nav.open {
   display: block;
-  margin: 100px auto;
+  padding-top: 100px;
   text-align: center;
 }
 
@@ -95,7 +100,6 @@
 .header__nav.open ul {
   padding-left: 0;
 }
-
 
 .header__nav.open a{
   text-decoration: none;

@@ -18,7 +18,7 @@
     @include('parts.header')
   </header>
 
-  <main>
+  <main class="detail__main">
     {{-- 店舗詳細画面 --}}
     <div class="detail__store">
       <div class="detail__store-name">

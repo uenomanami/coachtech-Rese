@@ -2,12 +2,18 @@ body {
   background-color: rgb(238, 238, 238);
 }
 
-main {
-  margin: 30px 80px;
+.detail__main {
+  width: 100%;
+  padding: 30px 80px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
 }
+
 /* 詳細 */
 .detail__store {
-  width: 500px;
+  width: 40%;
+  box-sizing: border-box;
   display: inline-block;
 }
 
@@ -33,6 +39,7 @@ main {
 .detail__store-name h2 {
   display: inline-block;
   margin-left: 3px;
+  margin-bottom: 10px;
 }
 
 .favorite__btn {
@@ -63,14 +70,14 @@ main {
 
 /* 予約 */
 .detail__reserve {
-  width: 500px;
-  height: 630px;
+  width: 50%;
+  height: 657px;
   background-color: rgb(53, 96, 246);
   box-shadow: 1px 1px 3px -1px;
   border-radius: 4px;
-  position: absolute;
-  margin-left: 100px; 
   margin-top: -80px;
+  display: inline-block;
+  box-sizing: border-box;
   display: inline-block;
 }
 
@@ -111,8 +118,7 @@ main {
   color: white;
   border-radius: 3px;
   border: none;
-  position: absolute;
-  bottom: 0;
+  /* box-shadow: 1px 1px 3px -1px; */
   width: 100%;
   text-align: center;
   padding-top: 15px;
@@ -121,8 +127,8 @@ main {
 }
 
 .overflow-scroll {
-  width: 80%;
-  height:400px;
+  width: 250px;
+  height: 400px;
   overflow-y: scroll;
 }
 
@@ -251,4 +257,37 @@ main {
 .detail__comment-star--gray {
   font-size: 24px;
   color: #ccc;
+}
+
+@media screen and (max-width: 768px) {
+  .detail__main {
+    text-align: center;
+    display: inline-block;
+    padding: 30px 10px;
+  }
+
+  .detail__store {
+    width: 100%;
+    max-width: 400px;
+    justify-content: center;
+    text-align: left;
+  }
+
+  .detail__reserve {
+    width: 100%;
+    max-width: 400px;
+    margin: 30px 0;
+  }
+
+  .reserve__date {
+    width: 98%;
+  }
+
+  .detail__reserve select {
+    width: 100%;
+  }
+
+  .overflow-scroll {
+  width: 100%;
+  } 
 }

@@ -55,7 +55,7 @@
     <input type="submit" class="search__submit">
   </form>
 
-  <main>
+  <main class="shop__main">
     @foreach ($stores as $store)
     <div class=" shop__card">
       <div class="shop__card-img">

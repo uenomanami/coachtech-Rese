@@ -2,45 +2,33 @@ body {
   background-color: rgb(238, 238, 238);
 }
 
-main {
-  margin: 20px 80px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
+.mypage__main {
+  padding: 20px 80px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .mypage__user-name {
   font-size: 24px;
   text-align: center;
   font-weight: bold;
-  margin: 20px 0
+  margin: 30px 0
 }
 
+/* 予約状況 */
 .mypage__reserve {
-  width: 30%;
-  box-sizing: border-box;
+  width: 420px;
+  display: inline-block;
 }
 
-.my_page__favorite {
-  width: 60%;
-  box-sizing: border-box;
-}
-
-.my_page__favorite h2,
 .mypage__reserve h2{
   width: 100%;
   margin-bottom: 25px;
   font-size: 20px;
 }
 
-/* 予約状況 */
-
-table {
-  width: 100%;
-}
-
 .mypage__reserve-card {
+  box-sizing: border-box;
   width: 100%;
   padding: 30px;
   border-radius: 5px;
@@ -90,7 +78,8 @@ table {
 }
 
 .mypage__reserve-card table {
-  margin-top: 20px;
+  width: 100%;
+    margin-top: 20px;
 }
 
 .mypage__reserve-card th{
@@ -121,7 +110,7 @@ table {
 
 .reserve__date {
   display: inline-block;
-  width: 82%;
+  width: 77%;
   padding: 3px;
   border: none;
   border-radius: 3px;
@@ -131,7 +120,7 @@ table {
 .mypage__reserve select {
   appearance: none;
   display: inline-block;
-  width: 86%;
+  width: 80%;
   height: 25px;
   padding: 3px;
   border: none;
@@ -141,8 +130,23 @@ table {
 
 
 /* お気に入り店舗 */
+.mypage__favorite {
+  width: calc(100% - 500px);
+  min-width: 270px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 30px;
+}
+
+.mypage__favorite h2 {
+  width: 270px;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+
 .shop__card {
   width: 270px;
+  box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 1px 1px 3px -1px;
   background-color: #fff;
@@ -194,4 +198,35 @@ table {
   background-color: #fff;
   border: none;
   cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .mypage__main {
+    text-align: center;
+    padding: 20px 10px;
+  }
+
+  .mypage__user-name {
+    text-align: left;
+  }
+
+  .mypage__reserve {
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .mypage__reserve h2 {
+    width: 100%;
+  }
+  .mypage__reserve-card {
+    padding: 10px;
+  }
+
+  .mypage__favorite {
+    display: block;
+    width: 270px;
+    margin: 0 auto;
+  }
 }

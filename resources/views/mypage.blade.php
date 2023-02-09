@@ -17,8 +17,8 @@
   <header name="logo" class="logo">
     @include('parts.header')
   </header>
-  <p class="mypage__user-name">{{ $user->name }}さん</p>
-  <main>
+  <main class="mypage__main">
+    <p class="mypage__user-name">{{ $user->name }}さん</p>
 
     <div class="mypage__reserve">
       <h2>予約状況</h2>
@@ -89,7 +89,7 @@
       @endforeach
     </div>
 
-    <div class="my_page__favorite">
+    <div class="mypage__favorite">
       <h2>お気に入り店舗</h2>
       @foreach ($stores as $store)
       <div class="shop__card">
@@ -120,7 +120,6 @@
     </div>
   </main>
   <script src=" {{ asset('js/header.js') }}"></script>
-  <script src=" {{ asset('js/mypage.js') }}"></script>
 </body>
 
 </html>
