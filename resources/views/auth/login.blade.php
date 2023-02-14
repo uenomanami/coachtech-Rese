@@ -1,9 +1,18 @@
+@extends('layouts.parent')
+
+@section('title')
+ログイン
+@endsection
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/auth/common.css') }}">
+@endpush
+
+@section('content')
 <x-guest-layout>
   <x-auth-card>
     <x-slot name="logo" class="logo">
-      @include('parts.header')
     </x-slot>
-
 
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
@@ -48,3 +57,4 @@
 
   </x-auth-card>
 </x-guest-layout>
+@endsection

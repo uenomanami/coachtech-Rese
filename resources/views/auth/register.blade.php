@@ -1,7 +1,18 @@
+@extends('layouts.parent')
+
+@section('title')
+会員登録
+@endsection
+
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/auth/common.css') }}">
+@endpush
+
+@section('content')
+
 <x-guest-layout>
   <x-auth-card>
     <x-slot name="logo" class="logo">
-      @include('parts.header')
     </x-slot>
 
     <div class="auth-common__form">
@@ -53,3 +64,4 @@
 
   </x-auth-card>
 </x-guest-layout>
+@endsection

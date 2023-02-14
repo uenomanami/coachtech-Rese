@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="ja">
+@extends('layouts.parent')
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+@section('title')
+予約完了
+@endsection
 
-  <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
-</head>
+@push('css')
+<link rel="stylesheet" href="{{ asset('css/thanks.css') }}">
+@endpush
 
-<body>
-  <header name="logo" class="logo">
-    @include('parts.header')
-  </header>
+@section('content')
 
-  <div class="thanks__box">
-    <p>会員登録ありがとうございます</p>
-    <a href="/login">ログインする</a>
-  </div>
+<div class="thanks__box">
+  <p>会員登録ありがとうございます</p>
+  <a href="/login">ログインする</a>
+</div>
 
-  <script src="{{ asset('js/header.js') }}"></script>
-</body>
-
-</html>
+@endsection
