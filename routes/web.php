@@ -6,6 +6,8 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReserveController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\AdministorController;
+use App\Http\Controllers\StoremanagerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +38,28 @@ Route::prefix('detail')->group(function () {
     Route::post('comment', [CommentController::class, 'create'])->name('comment');
 });
 
-Route::get('/mypage', [UserController::class, 'mypage'])->middleware('auth');;
+Route::get('/mypage', [UserController::class, 'mypage'])->middleware('auth');
+
+Route::group(
+    ['middleware' => ['auth', 'can:administer']],
+    function () {
+        Route::get('/administrator', [AdministorController::class, 'index']);
+        Route::post('/administrator', [AdministorController::class, 'create']);
+    }
+);
+
+Route::group(
+    ['middleware' => ['auth', 'can:storemanager']],
+    function () {
+        Route::prefix('storemanager')->group(function () {
+            Route::get('', [StoremanagerController::class, 'index']);
+            Route::post('create', [StoremanagerController::class, 'create'])->name('storemanager.create');
+            Route::get('find', [StoremanagerController::class, 'find'])->name('storemanager.find');
+            Route::get('edit', [StoremanagerController::class, 'edit']);
+            Route::post('edit', [StoremanagerController::class, 'update'])->name('storeinfo.update');
+        });
+    }
+);
 
 Route::get('/thanks', function () {
     return view('thanks');

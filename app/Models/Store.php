@@ -18,15 +18,16 @@ class Store extends Model
         'category_id',
         'area_id',
         'description',
-        'image_url'
+        'image_url',
+        'user_id'
     ];
 
-    public function getArea() //修正
+    public function getArea()
     {
         return '#' . optional($this->area)->name;
     }
 
-    public function getCategory() //修正
+    public function getCategory()
     {
         return '#' . optional($this->category)->name;
     }
@@ -81,5 +82,13 @@ class Store extends Model
     public function is_userComment($store_id, $user_id)
     {
         return $this->comments()->where('store_id', $store_id)->where('user_id', $user_id)->exists();
+    }
+
+    public static function searchStore($user_id)
+    {
+        $query = self::query();
+        $query->where('user_id', "$user_id");
+        $results = $query->first();
+        return $results;
     }
 }

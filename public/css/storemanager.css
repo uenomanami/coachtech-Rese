@@ -1,0 +1,137 @@
+body {
+  background-color: rgb(238, 238, 238);
+}
+
+.storemanager__main {
+  padding: 20px 80px;
+}
+
+.storemanager__create-image {
+  width: 40%;
+  margin: 15px 0 ;
+  vertical-align: top;
+}
+
+.storemanager__create-item select,input {
+  display: block;
+  width: 250px;
+  height: 25px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.storemanager__create-description {
+  width: 100%;
+  margin-top: 15px;
+  line-height: 25px;
+  border: none;
+  border-radius: 3px;
+}
+
+.storemanager__create-item button {
+  width: 100%;
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.validation__error-red {
+  color: rgb(241, 60, 60);
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.storemanager__main h1{
+  font-size: 30px;
+  text-align: center;
+}
+
+.storemanager__reserve,
+.storemanager__info {
+  width: 70%;
+  margin: 40px auto 0;
+}
+
+.storemanager__main h2 {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.storemanager__info-wrap {
+  width: 100%;
+  display: flex;
+}
+
+.storemanager__info-wrap img{
+  width: 300px;
+}
+
+.storemanager__info-item p{
+  padding: 15px 0 0 20px;
+}
+
+.storemanager__info-description {
+  line-height: 25px;
+}
+
+.storemanager__info-item button {
+  width: 95%;
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin: 10px 20px;
+}
+
+.storemanager__reserve table {
+  width: 100%;
+  margin: 10px auto;
+  background-color: #fff;
+  border-radius: 5px;
+  border-collapse: separate;
+}
+
+.storemanager__reserve table th,td{
+  padding: 10px 20px;
+  text-align: left;
+}
+
+.storemanager__reserve table th{
+  background-color: rgb(53, 96, 246);
+  color: #fff;
+}
+
+.storemanager__reserve table th:first-child {
+  border-radius: 5px 0 0 0;
+}
+
+.storemanager__reserve table th:nth-of-type(5) {
+  border-radius: 0 5px 0 0;
+}
+
+.storemanager__reserve table td:last-child{
+  text-align: center;
+}
+
+.storemanager__reserve button {
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 5px 10px;
+  cursor: pointer;
+}

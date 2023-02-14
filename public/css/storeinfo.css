@@ -1,0 +1,56 @@
+body {
+  background-color: rgb(238, 238, 238);
+}
+
+.storeinfo__main {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.storeinfo__main h1 {
+  font-size: 30px;
+  text-align: center;
+}
+
+.storeinfo__edit {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.storeinfo__edit select {
+  display: block;
+  width: 50%;
+  height: 25px;
+  margin-top: 15px;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.storeinfo__edit-description {
+  width: 100%;
+  margin-top: 15px;
+  line-height: 25px;
+  border: none;
+  border-radius: 3px;
+}
+
+.storeinfo__edit button {
+  width: 100%;
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.validation__error-red {
+  color: rgb(241, 60, 60);
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}

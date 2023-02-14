@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'register') {
+        if ($this->path() == 'register' or $this->path() == 'administrator') {
             return true;
         } else {
             return false;
@@ -33,5 +33,4 @@ class RegisterRequest extends FormRequest
             'password' => 'required|min:8|max:191',
         ];
     }
-
 }

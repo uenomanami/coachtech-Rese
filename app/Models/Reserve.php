@@ -25,11 +25,6 @@ class Reserve extends Model
         return optional($this->store)->name;
     }
 
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
-
     public function store()
     {
         return $this->belongsTo('App\Models\Store');
@@ -51,5 +46,23 @@ class Reserve extends Model
 
         $results = $query->get();
         return $results;
+    }
+
+    public static function storeReserve($store_id)
+    {
+        $query = self::query();
+        $query->where('store_id', "$store_id");
+
+        $results = $query->get();
+        return $results;
+    }
+    public function getUsername()
+    {
+        return optional($this->user)->name;
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
     }
 }
