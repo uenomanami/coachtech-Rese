@@ -8,6 +8,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\AdministorController;
 use App\Http\Controllers\StoremanagerController;
+use App\Http\Controllers\StoreDateController;
+use App\Http\Controllers\MailSendController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -41,10 +44,16 @@ Route::prefix('detail')->group(function () {
 Route::get('/mypage', [UserController::class, 'mypage'])->middleware('auth');
 
 Route::group(
-    ['middleware' => ['auth', 'can:administer']],
+    ['middleware' => ['auth', 'can:administor']],
     function () {
-        Route::get('/administrator', [AdministorController::class, 'index']);
-        Route::post('/administrator', [AdministorController::class, 'create']);
+        Route::prefix('administor')->group(
+            function () {
+                Route::get('', [AdministorController::class, 'index']);
+                Route::post('', [AdministorController::class, 'create']);
+                Route::get('mail', [MailSendController::class, 'index']);
+                Route::post('mail', [MailSendController::class, 'send']);
+            }
+        );
     }
 );
 
@@ -57,6 +66,7 @@ Route::group(
             Route::get('find', [StoremanagerController::class, 'find'])->name('storemanager.find');
             Route::get('edit', [StoremanagerController::class, 'edit']);
             Route::post('edit', [StoremanagerController::class, 'update'])->name('storeinfo.update');
+            Route::post('storedate', [StoreDateController::class, 'create'])->name('storedate.create');
         });
     }
 );
