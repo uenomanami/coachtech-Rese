@@ -1,7 +1,9 @@
-body {
-  background-color: rgb(238, 238, 238);
+main{
+  display: flex;
+  padding: 20px 80px;
+  width: 100%;
+  box-sizing: border-box;
 }
-
 .storeinfo__main {
   width: 500px;
   margin: 0 auto;
@@ -53,4 +55,29 @@ body {
   font-weight: bold;
   margin-top: 15px;
   margin-bottom: 15px;
+}
+
+.storeinfo__closed-date{
+  width: 500px;
+  margin: 20px auto;
+}
+
+.storeinfo__closed-date h2{
+  font-size: 24px;
+}
+
+.closed-date{
+  display: block;
+}
+
+.storeinfo__closed-date button {
+  width: 100%;
+  background-color: rgb(53, 96, 246);
+  color: white;
+  border-radius: 3px;
+  border: none;
+  text-align: center;
+  padding: 6px 10px;
+  cursor: pointer;
+  margin-top: 10px;
 }

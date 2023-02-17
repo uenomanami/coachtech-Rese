@@ -56,6 +56,10 @@
         @if ($errors->has('date'))
         <p class="validation__error-red">Error:{{$errors->first('date')}}</p>
         @endif
+        @if(session()->has('message'))
+        <p class="validation__error-red">{{session('message')}}</p>
+        @endif
+
         <select name="start_at">
           <option value="17:00">17:00</option>
           <option value="17:30">17:30</option>
@@ -67,10 +71,10 @@
           <option value="20:30">20:30</option>
           <option value="21:00">21:00</option>
         </select>
-
         @if ($errors->has('start_at'))
         <p>Error:{{$errors->first('start_at')}}</p>
         @endif
+
         <select name="num_of_people">
           <option value="1">1人</option>
           <option value="2">2人</option>

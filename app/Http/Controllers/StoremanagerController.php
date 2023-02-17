@@ -10,7 +10,7 @@ use App\Models\Area;
 use App\Models\Category;
 use App\Http\Requests\StoreinfoRequest;
 use App\Http\Requests\StoreEditRequest;
-
+use App\Models\Closeddate;
 
 class StoremanagerController extends Controller
 {
@@ -71,11 +71,13 @@ class StoremanagerController extends Controller
         $store = Store::find($request->store_id);
         $areas = Area::all();
         $categories = Category::all();
+        $closeddates = Closeddate::where('store_id', "$request->store_id")->orderBy('date','asc')->get();
 
         $param = [
             'store' => $store,
             'areas' => $areas,
-            'categories' => $categories
+            'categories' => $categories,
+            'closeddates' => $closeddates
         ];
         return view('storeinfo', $param);
     }

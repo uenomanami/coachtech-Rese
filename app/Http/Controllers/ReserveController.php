@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Reserve;
 use App\Http\Requests\ReserveRequest;
+use App\Models\Closeddate;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -20,9 +21,15 @@ class ReserveController extends Controller
             'num_of_people' => $reserve['num_of_people'],
             'start_at' => $reserve['date'] . " " . $reserve['start_at'],
         ];
-        Reserve::create($reserve);
 
-        return view('done');
+        $result = Closeddate::searchDate($reserve['store_id'], $request->date);
+
+        if (!$result) {
+            Reserve::create($reserve);
+            return view('done');
+        } else {
+            return back()->with('message', '営業日を選択してください');
+        };
     }
 
     public function update(ReserveRequest $request)
