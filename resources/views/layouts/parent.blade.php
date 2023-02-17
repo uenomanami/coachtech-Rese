@@ -37,8 +37,8 @@
         @can('storemanager')
         <li><a href="/storemanager">店舗代表者</a></li>
         @endcan
-        @can('administer')
-        <li><a href="/administrator">管理者画面</a></li>
+        @can('administor')
+        <li><a href="/administor">管理者画面</a></li>
         @endcan
       </ul>
       @else
