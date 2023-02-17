@@ -33,8 +33,8 @@ class AuthServiceProvider extends ServiceProvider
             return ($user->permission_id >= 2);
         });
 
-        Gate::define('administer', function ($user) {
-            return ($user->permission_id >= 3);
+        Gate::define('administor', function ($user) {
+            return ($user->permission_id == 3);
         });
     }
 }

@@ -14,7 +14,7 @@ class AdministorController extends Controller
 {
     public function index()
     {
-        return view('administrator');
+        return view('administor');
     }
 
     public function create(RegisterRequest $request)
@@ -28,6 +28,6 @@ class AdministorController extends Controller
 
         event(new Registered($user));
 
-        return redirect("/administrator");
+        return redirect("/administor");
     }
 }
