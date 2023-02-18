@@ -90,8 +90,9 @@ Rese店舗管理画面
         <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}</td>
         <td>{{ $reserve->getUsername() }}</td>
         <td>{{ $reserve->num_of_people }}名</td>
-        <form action="storemanager/find" method="get">
-          <td><button type="submit" name="reserve_id" value="{{ $reserve->id }}">詳細</button></td>
+        <form action="{{ route('storemanager.find')}}" method="get">
+          @csrf
+          <td><button name="reserve_id" value="{{ $reserve->id }}">詳細</button></td>
         </form>
       </tr>
       @endforeach

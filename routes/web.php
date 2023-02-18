@@ -10,6 +10,7 @@ use App\Http\Controllers\AdministorController;
 use App\Http\Controllers\StoremanagerController;
 use App\Http\Controllers\StoreDateController;
 use App\Http\Controllers\MailSendController;
+use App\Http\Controllers\QrCodeReserveController;
 
 
 /*
@@ -74,6 +75,8 @@ Route::group(
 Route::get('/thanks', function () {
     return view('thanks');
 });
+
+Route::get('/reserve/qrcode', [QrCodeReserveController::class, 'index'])->name('reserve.qrcode');
 
 // Route::get('/register', function () {
 //     return view('register');

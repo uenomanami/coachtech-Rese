@@ -18,6 +18,10 @@
     <div class="mypage__reserve-card">
       <div class="reserve-card__title">
         <p>予約&nbsp;{{ $key+1 }}</p>
+        <form action="{{ route('reserve.qrcode', ['reserve_id' => $reserve->id ]) }}" method="get" class="qrcode">
+          @csrf
+          <button name="reserve_id" value="{{ $reserve->id }}">QRコード表示</button>
+        </form>
         <form action="{{ route('reserve.delete', ['reserve_id' => $reserve->id ])}}" method="post">
           @csrf
           <button type="sumbit" onclick='return confirm("予約を取り消しますか？")'><img src="{{ asset('images/batu.png')}}"
