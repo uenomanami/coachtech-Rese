@@ -9,6 +9,7 @@ use App\Models\Category;
 use App\Models\Store;
 use App\Models\Reserve;
 use App\Models\Comment;
+use App\Models\Closeddate;
 
 class StoreController extends Controller
 {
@@ -35,11 +36,18 @@ class StoreController extends Controller
         $reserve = Reserve::searchReserve($user_id, $store_id);
         $comment = Comment::searchComment($store_id);
 
+        $closeddates = Closeddate::thisMonth($store_id);
+        $closeddates_lastmonth = Closeddate::nextMonth($store_id);
+        $closeddates_monthafternext = Closeddate::afterNextMonth($store_id);
+
         $param = [
             'user_id' => $user_id,
             'store' => $store,
             'reserves' => $reserve,
-            'comments' => $comment
+            'comments' => $comment,
+            'closeddates' => $closeddates,
+            'closeddates_lastmonth' => $closeddates_lastmonth,
+            'closeddates_monthafternext' => $closeddates_monthafternext,
         ];
         return view('detail', $param);
     }
@@ -62,7 +70,7 @@ class StoreController extends Controller
             'stores' => $stores,
             'input_area' => $input_area,
             'input_category' => $input_category,
-            'input_content' => $input_content
+            'input_content' => $input_content,
         ];
         return view('index', $param);
     }

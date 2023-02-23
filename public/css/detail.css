@@ -64,6 +64,37 @@
   font-size: 14px;
 }
 
+.detail__closed-date{
+  border-top: 1px solid black;
+  padding-top: 20px;
+  margin-top: 20px;
+}
+
+.detail__closed-date h3:nth-of-type(2) {
+  margin-top: 10px;
+}
+
+.closed-date__wrap {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.closed-date__month {
+  padding-bottom: 5px;
+}
+
+.closed-date__date {
+  padding-left: 18px;
+  font-size: 14px;
+}
+
+.closed-date__date p {
+  display: inline-block;
+  padding-right: 5px;
+  font-size: 14px;
+}
+
 /* 予約 */
 .detail__reserve {
   width: 50%;

@@ -42,6 +42,43 @@
       <p class="detail__store-category">{{ $store->getCategory() }}</p>
     </div>
     <p class="detail__store-description">{{ $store->description }}</p>
+
+    <div class="detail__closed-date">
+      <h3>定休日</h3>
+      @if(isset($closeddates[0]))
+      <div class="closed-date__wrap">
+        <p class="closed-date__month">{{ \Carbon\Carbon::now()->format("n月") }}</p>
+        <div class="closed-date__date">
+          @foreach($closeddates as $closeddate)
+          <p>{{ \Carbon\Carbon::createFromDate($closeddate->date)->format("j日") }}</p>
+          @endforeach
+        </div>
+      </div>
+      @endif
+
+      @if(isset($closeddates_lastmonth[0]))
+      <div class="closed-date__wrap">
+        <p class="closed-date__month">{{ \Carbon\Carbon::now()->addMonth()->format("n月") }}</p>
+        <div class="closed-date__date">
+          @foreach($closeddates_lastmonth as $closeddate_lastmonth)
+          <p>{{ \Carbon\Carbon::createFromDate($closeddate_lastmonth->date)->format("j日") }}</p>
+          @endforeach
+        </div>
+      </div>
+      @endif
+
+      @if(isset($closeddates_monthafternext[0]))
+      <div class="closed-date__wrap">
+        <p class="closed-date__month">{{ \Carbon\Carbon::now()->addMonth(+2)->format("n月") }}</p>
+        <div class="closed-date__date">
+          @foreach($closeddates_monthafternext as $closeddate_monthafternext)
+          <p>{{ \Carbon\Carbon::createFromDate($closeddate_monthafternext->date)->format("j日") }}
+          </p>
+          @endforeach
+        </div>
+      </div>
+      @endif
+    </div>
   </div>
 
   {{-- 予約画面 --}}

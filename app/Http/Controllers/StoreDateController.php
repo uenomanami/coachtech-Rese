@@ -4,29 +4,30 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Closeddate;
+use App\Http\Requests\CloseddateRequest;
 
 
 class StoreDateController extends Controller
 {
-    public function create(Request $request)
+    public function create(CloseddateRequest $request)
     {
+        $store_id = $request->store_id;
+        $date = $request->date;
 
-        foreach ($request->closed as $i => $val) {
-
-            $store_id = $request->store_id;
-            $date = $request->closed[$i];
-
-            $param = [
-                'store_id' => $store_id,
-                'date' => $date,
-            ];
-
-            $result = Closeddate::searchDate($store_id, $date);
-            if (!$result) {
-                Closeddate::create($param);
-            }
+        $param = [
+            'store_id' => $store_id,
+            'date' => $date,
+        ];
+        $result = Closeddate::searchDate($store_id, $date);
+        if (!$result) {
+            Closeddate::create($param);
         }
+        return back();
+    }
 
-        return redirect('storemanager');
+    public function delete(Request $request)
+    {
+        Closeddate::find($request->closeddate_id)->delete();
+        return back();
     }
 }

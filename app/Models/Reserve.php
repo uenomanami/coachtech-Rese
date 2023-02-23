@@ -42,7 +42,7 @@ class Reserve extends Model
     public static function userReserve($user_id)
     {
         $query = self::query();
-        $query->where('user_id', "$user_id");
+        $query->where('user_id', "$user_id")->orderBy('start_at', 'asc');
 
         $results = $query->get();
         return $results;
@@ -51,7 +51,7 @@ class Reserve extends Model
     public static function storeReserve($store_id)
     {
         $query = self::query();
-        $query->where('store_id', "$store_id");
+        $query->where('store_id', "$store_id")->orderBy('start_at', 'asc');
 
         $results = $query->get();
         return $results;

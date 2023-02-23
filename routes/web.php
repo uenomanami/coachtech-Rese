@@ -11,7 +11,7 @@ use App\Http\Controllers\StoremanagerController;
 use App\Http\Controllers\StoreDateController;
 use App\Http\Controllers\MailSendController;
 use App\Http\Controllers\QrCodeReserveController;
-
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,11 +64,20 @@ Route::group(
         Route::prefix('storemanager')->group(function () {
             Route::get('', [StoremanagerController::class, 'index']);
             Route::post('create', [StoremanagerController::class, 'create'])->name('storemanager.create');
-            Route::get('find', [StoremanagerController::class, 'find'])->name('storemanager.find');
+            Route::get('reserve', [StoremanagerController::class, 'reserve'])->name('storemanager.reserve');
             Route::get('edit', [StoremanagerController::class, 'edit']);
             Route::post('edit', [StoremanagerController::class, 'update'])->name('storeinfo.update');
-            Route::post('storedate', [StoreDateController::class, 'create'])->name('storedate.create');
+            Route::post('storedate/create', [StoreDateController::class, 'create'])->name('storedate.create');
+            Route::post('storedate/delete', [StoreDateController::class, 'delete'])->name('storedate.delete');
         });
+    }
+);
+
+Route::prefix('payment')->group(
+    function () {
+        Route::get('', [PaymentController::class, 'index'])->name('payment');
+        Route::post('/form', [PaymentController::class, 'payment'])->name('payment.form');
+        Route::get('/complete', [PaymentController::class, 'complete'])->name('payment.complete');
     }
 );
 

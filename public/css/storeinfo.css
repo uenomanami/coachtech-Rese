@@ -1,22 +1,22 @@
-main{
-  display: flex;
-  padding: 20px 80px;
-  width: 100%;
-  box-sizing: border-box;
-}
 .storeinfo__main {
-  width: 500px;
-  margin: 0 auto;
+  text-align: center;
 }
 
 .storeinfo__main h1 {
   font-size: 30px;
   text-align: center;
+  margin-bottom: 40px;
+}
+
+.storeinfo__main h2 {
+  padding-bottom: 10px;
 }
 
 .storeinfo__edit {
-  width: 100%;
-  margin-top: 40px;
+  width: 400px;
+  text-align: left;
+  padding-bottom: 50px;
+  display: inline-block;
 }
 
 .storeinfo__edit select {
@@ -32,6 +32,7 @@ main{
 
 .storeinfo__edit-description {
   width: 100%;
+  box-sizing: border-box;
   margin-top: 15px;
   line-height: 25px;
   border: none;
@@ -57,27 +58,94 @@ main{
   margin-bottom: 15px;
 }
 
-.storeinfo__closed-date{
-  width: 500px;
-  margin: 20px auto;
+.storeinfo__closed-date {
+  vertical-align: top;
+  width: 300px;
+  display: inline-block;
+  text-align: left;
+  margin-left: 50px;
 }
 
-.storeinfo__closed-date h2{
-  font-size: 24px;
+.storeinfo__closed-date h3 {
+  padding-bottom: 10px;
 }
 
-.closed-date{
-  display: block;
+.storeinfo__closed-date h3:nth-of-type(2) {
+  margin-top: 30px;
 }
 
-.storeinfo__closed-date button {
+.closed-date__wrap {
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.closed-date__month {
+  padding-bottom: 5px;
+}
+
+.closed-date__date {
+  padding-left: 18px;
+  font-size: 14px;
+  display: inline-block;
+  display: flex;
+}
+
+.closed-date__date button {
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.storeinfo__closed-create  {
+  margin-top: 20px;
   width: 100%;
+}
+
+.storeinfo__delete-comment {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.storeinfo__closed-create input{
+  display: block;
+  width: 60%;
+  padding: 3px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.storeinfo__closed-create button {
   background-color: rgb(53, 96, 246);
   color: white;
   border-radius: 3px;
   border: none;
   text-align: center;
-  padding: 6px 10px;
+  padding: 3px 15px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-left: 10px;
+  display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+  .storeinfo__main {
+    padding: 30px 10px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+    .storeinfo__edit {
+    width: 90%;
+    box-sizing: border-box;
+  }
+
+    .storeinfo__closed-date {
+      width: 100%;
+      margin-left: 20px;
+    }
 }

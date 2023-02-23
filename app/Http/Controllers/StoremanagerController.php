@@ -56,7 +56,7 @@ class StoremanagerController extends Controller
         return redirect('storemanager');
     }
 
-    public function find(Request $request)
+    public function reserve(Request $request)
     {
         $reserve = Reserve::find($request->reserve_id);
 
@@ -71,13 +71,19 @@ class StoremanagerController extends Controller
         $store = Store::find($request->store_id);
         $areas = Area::all();
         $categories = Category::all();
-        $closeddates = Closeddate::where('store_id', "$request->store_id")->orderBy('date','asc')->get();
+
+        $closeddates = Closeddate::thisMonth($request->store_id);
+        $closeddates_lastmonth = Closeddate::nextMonth($request->store_id);
+        $closeddates_monthafternext = Closeddate::afterNextMonth($request->store_id);
 
         $param = [
             'store' => $store,
             'areas' => $areas,
             'categories' => $categories,
-            'closeddates' => $closeddates
+            'closeddates' => $closeddates,
+            'closeddates_lastmonth' => $closeddates_lastmonth,
+            'closeddates_monthafternext' => $closeddates_monthafternext
+
         ];
         return view('storeinfo', $param);
     }
