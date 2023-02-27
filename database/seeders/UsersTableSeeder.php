@@ -21,7 +21,6 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('test'),
             'permission_id' => '3',
         ];
-
         User::create($param);
 
         $param = [
@@ -30,7 +29,30 @@ class UsersTableSeeder extends Seeder
             'password' => Hash::make('test'),
             'permission_id' => '2',
         ];
+        User::create($param);
 
+        $param = [
+            'name' => 'テストユーザー１',
+            'email' => 'ccc@example.com',
+            'password' => Hash::make('test'),
+            'permission_id' => '1',
+        ];
+        User::create($param);
+
+        $param = [
+            'name' => 'テストユーザー2',
+            'email' => 'ddd@example.com',
+            'password' => Hash::make('test'),
+            'permission_id' => '1',
+        ];
+        User::create($param);
+
+        $param = [
+            'name' => 'テストユーザー3',
+            'email' => 'eee@example.com',
+            'password' => Hash::make('test'),
+            'permission_id' => '1',
+        ];
         User::create($param);
     }
 }
