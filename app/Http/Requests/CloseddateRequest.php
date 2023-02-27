@@ -13,7 +13,7 @@ class CloseddateRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'storemanager/storedate') {
+        if ($this->path() == 'storemanager/storedate/create') {
             return true;
         } else {
             return false;
