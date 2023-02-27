@@ -43,6 +43,12 @@
     </div>
     <p class="detail__store-description">{{ $store->description }}</p>
 
+    <div class="detail__store-course">
+      <h3>コース</h3>
+      <p>3,000円：5品、飲み放題</p>
+      <p>5,000円：7品、飲み放題</p>
+    </div>
+
     <div class="detail__closed-date">
       <h3>定休日</h3>
       @if(isset($closeddates[0]))
@@ -109,7 +115,7 @@
           <option value="21:00">21:00</option>
         </select>
         @if ($errors->has('start_at'))
-        <p>Error:{{$errors->first('start_at')}}</p>
+        <p class="validation__error-red">Error:{{$errors->first('start_at')}}</p>
         @endif
 
         <select name="num_of_people">
@@ -123,8 +129,18 @@
           <option value="8">8人</option>
         </select>
         @if ($errors->has('num_of_people'))
-        <p>Error:{{$errors->first('num_of_people')}}</p>
+        <p class="validation__error-red">Error:{{$errors->first('num_of_people')}}</p>
         @endif
+
+        <select name="amount">
+          <option value="">コースを選択しない</option>
+          <option value="3000">3000円</option>
+          <option value="5000">5000円</option>
+        </select>
+        @if ($errors->has('amount'))
+        <p class="validation__error-red">Error:{{$errors->first('amount')}}</p>
+        @endif
+        <p class="detail__course-note">※コースは前払い制となっているため、「予約する」ボタンを押すと決済画面へ遷移します。</p>
 
         <div class="overflow-scroll">
           @if (Auth::user()->is_reserve($store->id))
@@ -147,6 +163,12 @@
                 <th>Number</th>
                 <td>{{ $reserve->num_of_people }}人</td>
               </tr>
+              @if( !empty($reserve->course_amount))
+              <tr>
+                <th>Course</th>
+                <td>{{ $reserve->course_amount }}円</td>
+              </tr>
+              @endif
             </table>
           </div>
           @endforeach

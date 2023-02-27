@@ -13,37 +13,74 @@
 
   <h1>{{ $store->name }}</h1>
   <div class="storeinfo__edit">
-    <h2>店舗情報</h2>
     <form action="{{ route('storeinfo.update', ['store_id' => $store->id, 'store_name' => $store->name]) }}"
       method="POST" enctype="multipart/form-data">
       @csrf
-      <input type="file" name="image_url" class="storeinfo__edit-image">
-      <select name="area">
-        @foreach ($areas as $area)
-        <option value="{{ $area->id }}" @if( $store->area_id == $area->id ) selected @endif>{{ $area->name }}</option>
-        @endforeach
-      </select>
-      @if ($errors->has('area'))
-      <p class="validation__error-red">Error:{{$errors->first('area')}}</p>
-      @endif
+      <table>
+        <tr>
+          <th><label for="image_url">画像ファイル：</label></th>
+          <td><input type="file" name="image_url" class="storeinfo__edit-image"></td>
+        </tr>
+        <tr>
+          <th><label for="area">エリア：</label></th>
+          <td>
+            <select name="area">
+              @foreach ($areas as $area)
+              <option value="{{ $area->id }}" @if( $store->area_id == $area->id ) selected @endif>{{ $area->name }}
+              </option>
+              @endforeach
+            </select>
+          </td>
+        </tr>
+        @if ($errors->has('area'))
+        <tr>
+          <th></th>
+          <td>
+            <p class="validation__error-red">Error:{{$errors->first('area')}}</p>
+          </td>
+        </tr>
+        @endif
+        </tr>
 
-      <select name="category">
-        @foreach ($categories as $category)
-        <option value="{{ $category->id }}" @if( $store->category_id == $category->id ) selected @endif>{{
-          $category->name }}</option>
-        @endforeach
-      </select>
-      @if ($errors->has('category'))
-      <p class="validation__error-red">Error:{{$errors->first('category')}}</p>
-      @endif
+        <tr>
+          <th><label for="category">カテゴリー：</label></th>
+          <td>
+            <select name="category">
+              @foreach ($categories as $category)
+              <option value="{{ $category->id }}" @if( $store->category_id == $category->id ) selected @endif>{{
+                $category->name }}</option>
+              @endforeach
+            </select>
+          </td>
+        </tr>
+        @if ($errors->has('category'))
+        <tr>
+          <th></th>
+          <td>
+            <p class="validation__error-red">Error:{{$errors->first('category')}}</p>
+          </td>
+        </tr>
+        @endif
 
-      <textarea class="storeinfo__edit-description" name="description" id="" cols="30"
-        rows="10">{{ $store->description }}</textarea>
-      @if ($errors->has('description'))
-      <p class="validation__error-red">Error:{{$errors->first('description')}}</p>
-      @endif
+        <tr>
+          <th class="textarea-title"><label for="description">店舗紹介：</label></th>
+          <td><textarea class="storeinfo__edit-description" name="description" id="" cols="30"
+              rows="10">{{ $store->description }}</textarea></td>
+        </tr>
+        @if ($errors->has('description'))
+        <tr>
+          <th></th>
+          <td>
+            <p class="validation__error-red">Error:{{$errors->first('description')}}</p>
+          </td>
+        </tr>
+        @endif
 
-      <button type="submit" name="store_id" value="{{ $store->id }}">店舗情報を変更する</button>
+        <tr>
+          <th colspan="2"><button type="submit" name="store_id" value="{{ $store->id }}">店舗情報を変更する</button></th>
+        </tr>
+
+      </table>
     </form>
   </div>
 

@@ -19,6 +19,7 @@ class CreateReservesTable extends Migration
             $table->foreignId('store_id')->constrained();
             $table->unsignedBigInteger('num_of_people');
             $table->dateTime('start_at');
+            $table->unsignedBigInteger('course_amount')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });

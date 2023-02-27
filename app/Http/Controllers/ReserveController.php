@@ -14,19 +14,25 @@ class ReserveController extends Controller
     public function create(ReserveRequest $request)
     {
         $user_id = Auth::id();
-        $reserve = $request->all();
-        $reserve = [
-            'user_id' => $user_id,
-            'store_id' => $reserve['store_id'],
-            'num_of_people' => $reserve['num_of_people'],
-            'start_at' => $reserve['date'] . " " . $reserve['start_at'],
-        ];
-
-        $result = Closeddate::searchDate($reserve['store_id'], $request->date);
+        $result = Closeddate::searchDate($request->store_id, $request->date);
 
         if (!$result) {
-            Reserve::create($reserve);
-            return view('done');
+            if (!empty($request->amount)) {
+                $amount = ($request->amount) * ($request->num_of_people);
+                $request->session()->put('amount', $amount);
+                $request->session()->put('reserve', $request->all());
+                return redirect('payment');
+            } else {
+                $reserve = [
+                    'user_id' => $user_id,
+                    'store_id' => $request->store_id,
+                    'num_of_people' => $request->num_of_people,
+                    'start_at' => $request->date . " " . $request->start_at,
+                ];
+
+                Reserve::create($reserve);
+                return view('done');
+            }
         } else {
             return back()->with('message', '営業日を選択してください');
         };
