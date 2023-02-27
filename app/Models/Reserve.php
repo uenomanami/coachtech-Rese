@@ -18,6 +18,7 @@ class Reserve extends Model
         'store_id',
         'num_of_people',
         'start_at',
+        'course_amount',
     ];
 
     public function getStorename()
