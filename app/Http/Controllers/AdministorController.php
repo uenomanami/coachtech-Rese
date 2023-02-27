@@ -9,7 +9,6 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Hash;
 
 
-
 class AdministorController extends Controller
 {
     public function index()

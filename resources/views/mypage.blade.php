@@ -20,7 +20,6 @@
         <p>予約&nbsp;{{ $key+1 }}</p>
         <form action="{{ route('reserve.qrcode', ['reserve_id' => $reserve->id ]) }}" method="get" class="qrcode">
           @csrf
-          <button name="reserve_id" value="{{ $reserve->id }}">QRコード表示</button>
         </form>
         <form action="{{ route('reserve.delete', ['reserve_id' => $reserve->id ])}}" method="post">
           @csrf
@@ -76,6 +75,12 @@
               </select>
             </td>
           </tr>
+          @if( !empty($reserve->course_amount))
+          <tr>
+            <th>Course</th>
+            <td>{{ $reserve->course_amount }}円</td>
+          </tr>
+          @endif
         </table>
         <div class="reserve-card__change" id="reserve-card__change">
           <button type="submit" onclick='return confirm("予約を変更しますか？")'>予約内容を変更</button>

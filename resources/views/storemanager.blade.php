@@ -15,12 +15,13 @@ Rese店舗管理画面
   @if(empty($store))
   <form action="storemanager/create" method="POST" enctype="multipart/form-data">
     @csrf
-    <input type="file" name="image_url">
-    @if ($errors->has('image_url'))
-    <p class="validation__error-red">Error:{{$errors->first('image_url')}}</p>
-    @endif
-
     <div class="storemanager__create-item">
+      <label for="image_url">イメージ画像：</label>
+      <input type="file" name="image_url">
+      @if ($errors->has('image_url'))
+      <p class="validation__error-red">Error:{{$errors->first('image_url')}}</p>
+      @endif
+
       <label for="name">店名：</label>
       <input type="text" name='name'>
       @if ($errors->has('name'))
@@ -61,16 +62,16 @@ Rese店舗管理画面
 
   <div class="storemanager__info">
     <h2>店舗情報</h2>
-    <div class="storemanager__info-wrap">
+    <div class="storemanager__info-img">
       <img src="{{ $store->image_url }}" alt="">
-      <div class="storemanager__info-item">
-        <p class="storemanager__info-area">{{ $store->getArea() }}</p>
-        <p class="dstoremanager__info-category">{{ $store->getCategory() }}</p>
-        <p class="storemanager__info-description">{{ $store->description }}</p>
-        <form action="/storemanager/edit" method="GET">
-          <button type="submit" name="store_id" value="{{ $store->id }}">店舗情報を変更する</button>
-        </form>
-      </div>
+    </div>
+    <div class="storemanager__info-item">
+      <p class="storemanager__info-area">{{ $store->getArea() }}</p>
+      <p class="dstoremanager__info-category">{{ $store->getCategory() }}</p>
+      <p class="storemanager__info-description">{{ $store->description }}</p>
+      <form action="/storemanager/edit" method="GET">
+        <button type="submit" name="store_id" value="{{ $store->id }}">店舗情報を変更する</button>
+      </form>
     </div>
   </div>
 

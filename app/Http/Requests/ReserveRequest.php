@@ -30,7 +30,7 @@ class ReserveRequest extends FormRequest
         return [
             'date' => 'required|date_format:Y-m-d|after:today',
             'start_at' => 'required|date_format:H:i',
-            'num_of_people' => 'required|integer'
+            'num_of_people' => 'required|integer',
         ];
     }
 
@@ -44,7 +44,7 @@ class ReserveRequest extends FormRequest
             'start_at.required' => '予約時間を入力してください',
             'start_at.date_format' => '時間の形式で入力してください',
             'num_of_people.required' => '人数を入力してください',
-            'num_of_people.integer' => '人数は数値で入力してください'
+            'num_of_people.integer' => '人数は数値で入力してください',
         ];
     }
 }

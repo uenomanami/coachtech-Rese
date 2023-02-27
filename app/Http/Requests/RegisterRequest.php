@@ -13,7 +13,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        if ($this->path() == 'register' or $this->path() == 'administrator') {
+        if ($this->path() == 'register' or $this->path() == 'administor') {
             return true;
         } else {
             return false;

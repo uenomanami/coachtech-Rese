@@ -11,7 +11,7 @@
 @section('content')
 <div class="admin">
   <h2 class="admin__title">店舗代表者登録</h2>
-  <form action="/administrator" method="POST">
+  <form action="/administor" method="POST">
     @csrf
     <table>
       <tr>

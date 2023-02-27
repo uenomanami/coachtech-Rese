@@ -1,7 +1,7 @@
 @extends('layouts.parent')
 
 @section('title')
-会員登録完了
+予約完了
 @endsection
 
 @push('css')
