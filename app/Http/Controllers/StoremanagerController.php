@@ -32,7 +32,6 @@ class StoremanagerController extends Controller
                 'store' => $store,
                 'areas' => $areas,
                 'categories' => $categories
-
             ];
         }
         return view('storemanager', $param);
@@ -83,7 +82,6 @@ class StoremanagerController extends Controller
             'closeddates' => $closeddates,
             'closeddates_lastmonth' => $closeddates_lastmonth,
             'closeddates_monthafternext' => $closeddates_monthafternext
-
         ];
         return view('storeinfo', $param);
     }
