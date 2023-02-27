@@ -30,8 +30,7 @@ class StoreEditRequest extends FormRequest
         return [
             'area' => 'required|integer',
             'category' => 'required|integer',
-            'description' => 'required|string',
-
+            'description' => 'required|string'
         ];
     }
     public function messages()
