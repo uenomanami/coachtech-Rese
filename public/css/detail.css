@@ -165,8 +165,9 @@
 }
 
 .overflow-scroll {
+  margin-top: 10px;
   width: 250px;
-  height: 400px;
+  height: 312px;
   overflow-y: scroll;
 }
 
@@ -197,7 +198,6 @@
 }
 
 /* レビュー */
-
 .detail__store-comment {
   margin: 100px auto 30px;
   text-align: center;

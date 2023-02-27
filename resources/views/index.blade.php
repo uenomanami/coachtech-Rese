@@ -16,7 +16,7 @@ Rese
         <div class="select-wrap">
           <select name="area" onchange="submit(this.form)">
             <option value="">All&nbsp;area</option>
-            @foreach( $areas as $area)
+            @foreach($areas as $area)
             <option value="{{ $area->id }}" @if(isset($input_area)) @if( $area->id == $input_area) selected @endif
               @endif>{{ $area->name }}</option>
             @endforeach
@@ -27,10 +27,9 @@ Rese
         <div class="select-wrap">
           <select name="category" onchange="submit(this.form)">
             <option value="">All&nbsp;genre</option>
-            @foreach( $categories as $category)
+            @foreach($categories as $category)
             <option value="{{ $category->id }}" @if(isset($input_category)) @if( $category->id == $input_category)
-              selected @endif @endif>{{
-              $category->name }}</option>
+              selected @endif @endif>{{$category->name }}</option>
             @endforeach
           </select>
         </div>

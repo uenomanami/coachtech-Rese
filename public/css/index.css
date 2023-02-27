@@ -84,8 +84,9 @@ table.shop__search td {
 
 .shop__search select {
   position: relative;
+  width: 100%;
   appearance: none;
-  padding: 0 10px;
+  padding-left: 10px;
   border: none;
   color: rgb(37, 37, 37);
 }

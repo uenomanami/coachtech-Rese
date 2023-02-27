@@ -14,16 +14,12 @@ class Favorite extends Model
     ];
 
     protected $fillable = [
-        'user_id', 'store_id'
+        'user_id',
+        'store_id'
     ];
 
     public function store()
     {
         return $this->belongsTo('App\Models\Favorite');
     }
-
-    // public function user()
-    // {
-    //     return $this->belongsTo(User::class);
-    // }
 }

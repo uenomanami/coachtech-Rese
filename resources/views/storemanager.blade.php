@@ -59,7 +59,6 @@ Rese店舗管理画面
 
   @else {{-- 店舗情報登録済みの場合 --}}
   <h1>{{ $store->name }}</h1>
-
   <div class="storemanager__info">
     <h2>店舗情報</h2>
     <div class="storemanager__info-img">
