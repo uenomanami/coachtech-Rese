@@ -34,7 +34,7 @@ class Reserve extends Model
     public static function searchReserve($user_id, $store_id)
     {
         $query = self::query();
-        $query->where('user_id', "$user_id")->where('store_id', "$store_id");
+        $query->where('user_id', "$user_id")->where('store_id', "$store_id")->where('start_at', '>=', date(now()))->orderBy('start_at', 'asc');
 
         $results = $query->get();
         return $results;
@@ -43,7 +43,16 @@ class Reserve extends Model
     public static function userReserve($user_id)
     {
         $query = self::query();
-        $query->where('user_id', "$user_id")->orderBy('start_at', 'asc');
+        $query->where('user_id', "$user_id")->where('start_at', '>=', date(now()))->orderBy('start_at', 'asc');
+
+        $results = $query->get();
+        return $results;
+    }
+
+    public static function pastReserve($user_id)
+    {
+        $query = self::query();
+        $query->where('user_id', "$user_id")->where('start_at', '<', date(now()))->orderBy('start_at', 'desc');
 
         $results = $query->get();
         return $results;

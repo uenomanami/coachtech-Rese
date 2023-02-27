@@ -18,9 +18,6 @@
     <div class="mypage__reserve-card">
       <div class="reserve-card__title">
         <p>予約&nbsp;{{ $key+1 }}</p>
-        <form action="{{ route('reserve.qrcode', ['reserve_id' => $reserve->id ]) }}" method="get" class="qrcode">
-          @csrf
-        </form>
         <form action="{{ route('reserve.delete', ['reserve_id' => $reserve->id ])}}" method="post">
           @csrf
           <button type="sumbit" onclick='return confirm("予約を取り消しますか？")'><img src="{{ asset('images/batu.png')}}"
@@ -36,10 +33,10 @@
           </tr>
           <tr>
             <th>Date</th>
-            <td>{{
-              \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}</td>
+            <td>{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}</td>
             <td class="reserve-date" id="reserve-date__change">→&nbsp;
-              <input type="date" class="reserve__date" name="date">
+              <input type="date" class="reserve__date" name="date"
+                value="{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('Y-m-d') }}">
             </td>
           </tr>
           <tr>
@@ -47,6 +44,9 @@
             <td id="reserve-time">{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}</td>
             <td>→&nbsp;
               <select name="start_at">
+                <option value="{{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}" selected>
+                  {{ \Carbon\Carbon::createFromTimeString($reserve->start_at)->format('H:i') }}
+                </option>
                 <option value="17:00">17:00</option>
                 <option value="17:30">17:30</option>
                 <option value="18:00">18:00</option>
@@ -64,6 +64,7 @@
             <td>{{ $reserve->num_of_people }}人</td>
             <td>→&nbsp;
               <select name="num_of_people">
+                <option value="{{ $reserve->num_of_people }}">{{ $reserve->num_of_people }}</option>
                 <option value="1">1人</option>
                 <option value="2">2人</option>
                 <option value="3">3人</option>
@@ -118,6 +119,27 @@
       </div>
     </div>
     @endforeach
+  </div>
+
+  <div class="mypage__pastreserve">
+    @if($pastreserves != [0])
+    <h2>予約履歴</h2>
+    <table>
+      @foreach($pastreserves as $pastreserve)
+      <tr>
+        <td>{{ \Carbon\Carbon::createFromTimeString($pastreserve->start_at)->format('Y-m-d') }}</td>
+        <td>{{ $pastreserve->getStorename() }}</td>
+        <td class="pastreserve-button">
+          <form action="/detail/" method="get">
+            <button class="to-detail__button" name="store_id" value="{{ $pastreserve->store_id }}"
+              type="submit">店舗詳細</button>
+          </form>
+        </td>
+      </tr>
+      @endforeach
+    </table>
+    @endif
+
   </div>
 </main>
 @endsection

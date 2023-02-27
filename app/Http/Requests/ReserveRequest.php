@@ -28,7 +28,7 @@ class ReserveRequest extends FormRequest
     public function rules()
     {
         return [
-            'date' => 'required|date_format:Y-m-d|after:today',
+            'date' => 'required|date_format:Y-m-d|after:today|before:2months',
             'start_at' => 'required|date_format:H:i',
             'num_of_people' => 'required|integer',
         ];
@@ -40,7 +40,7 @@ class ReserveRequest extends FormRequest
             'date.required' => '日付を入力してください',
             'date.date_format' => '日付の形式で入力してください',
             'date.after' => '日付は翌日以降の日付を指定してください',
-            'date.unique' => '営業日を選択してください',
+            'date.before' => '日付は３ヶ月以内を選択してください',
             'start_at.required' => '予約時間を入力してください',
             'start_at.date_format' => '時間の形式で入力してください',
             'num_of_people.required' => '人数を入力してください',

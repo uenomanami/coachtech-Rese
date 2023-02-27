@@ -13,8 +13,9 @@
 
 /* 予約状況 */
 .mypage__reserve {
-  width: 420px;
+  width: 380px;
   display: inline-block;
+  margin-right: 30px;
 }
 
 .mypage__reserve h2{
@@ -26,7 +27,7 @@
 .mypage__reserve-card {
   box-sizing: border-box;
   width: 100%;
-  padding: 30px;
+  padding: 15px 20px;
   border-radius: 5px;
   box-shadow: 1px 1px 3px -1px;
   background-color: rgb(53, 96, 246);
@@ -124,31 +125,29 @@
   cursor: pointer;
 }
 
-
 /* お気に入り店舗 */
 .mypage__favorite {
   width: calc(100% - 500px);
-  min-width: 270px;
+  min-width: 300px;
   display: inline-block;
   vertical-align: top;
-  margin-left: 30px;
 }
 
 .mypage__favorite h2 {
-  width: 270px;
+  width: 100%;
   margin-bottom: 25px;
   font-size: 20px;
 }
 
 .shop__card {
-  width: 270px;
+  width: 250px;
   box-sizing: border-box;
   border-radius: 5px;
   box-shadow: 1px 1px 3px -1px;
   background-color: #fff;
   display: inline-block;
   margin-bottom: 20px;
-  margin-right: 30px;
+  margin-right: 5px;
 }
 
 .shop__card-img img {
@@ -196,6 +195,32 @@
   cursor: pointer;
 }
 
+/*予約履歴*/
+.mypage__pastreserve {
+  width: 420px;
+  margin-top: 30px;
+}
+
+.mypage__pastreserve h2 {
+  width: 100%;
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.mypage__pastreserve table {
+  width: 100%;
+}
+
+.mypage__pastreserve table td {
+  padding: 10px;
+  box-sizing: border-box;
+  border-top: 1px solid black;
+}
+
+.pastreserve-button {
+  text-align: right;
+}
+
 @media screen and (max-width: 768px) {
   .mypage__main {
     text-align: center;
@@ -215,14 +240,21 @@
 
   .mypage__reserve h2 {
     width: 100%;
+    text-align: center;
   }
+
   .mypage__reserve-card {
     padding: 10px;
   }
 
   .mypage__favorite {
     display: block;
-    width: 270px;
-    margin: 0 auto;
+    margin: 20px auto;
+  }
+
+  .mypage__pastreserve {
+    width: 100%;
+    max-width: 420px;
+    margin: 20px auto;
   }
 }
