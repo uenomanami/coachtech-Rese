@@ -80,7 +80,6 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 | /                     | 飲食店一覧ページ     |
 | /detail/{store_id}    | 店舗詳細ページ       |
 | /mypage               | マイページ           |
-| ----                  | ----                 |
 | /register             | 会員登録ページ       |
 | /login                | ログイン画面         |
 | /logout               | ログアウト           |
