@@ -1,3 +1,20 @@
-{{ $name }}様
+<!DOCTYPE html>
+<html lang="ja">
 
-{{ $content }}
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rese管理者からのメール</title>
+</head>
+
+<body>
+
+  <p>{{ $name }}様</p>
+
+  <p>{{ $content }}</p>
+
+
+</body>
+
+</html>

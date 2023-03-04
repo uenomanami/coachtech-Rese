@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\SendTestMail;
-use Illuminate\Http\Request;
-use Illuminate\Http\MailRequest;
-use Illuminate\Support\Facades\Auth;
+use App\Mail\FromAdministorMail;
+use App\Http\Requests\MailRequest;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 
@@ -24,10 +22,10 @@ class MailSendController extends Controller
     public function send(MailRequest $request)
     {
         $user = User::find($request->user);
-        $title = $request->tile;
+        $title = $request->title;
         $content = $request->content;
-        Mail::send(new SendTestMail($user, $title, $content));
+        Mail::send(new FromAdministorMail($user, $title, $content));
 
-        return redirect('administor/mail');
+        return view('maildone');
     }
 }

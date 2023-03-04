@@ -85,10 +85,4 @@ Route::get('/thanks', function () {
     return view('thanks');
 });
 
-Route::get('/reserve/qrcode', [QrCodeReserveController::class, 'index'])->name('reserve.qrcode');
-
-// Route::get('/register', function () {
-//     return view('register');
-// })->middleware(['auth'])->name('register');
-
 require __DIR__ . '/auth.php';

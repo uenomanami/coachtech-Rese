@@ -43,10 +43,12 @@ class RemindReserve extends Command
     {
         $reserve_date = Carbon::today();
         $reserves = Reserve::wheredate('start_at', $reserve_date)->get();
-        foreach ($reserves as $reserve) {
-            $user = User::where('id', $reserves->user_id)->find();
-            $store = User::where('id', $reserves->store_id)->find();
-            return Mail::to($user->email)->send(new RemindReserveMail($user, $store, $reserve));
+        if (isset($reserves[0])) {
+            foreach ($reserves as $reserve) {
+                $user = User::find($reserve->user_id);
+                $store = Store::find($reserve->store_id);
+                return Mail::to($user->email)->send(new RemindReserveMail($user, $store, $reserve));
+            }
         }
     }
 }

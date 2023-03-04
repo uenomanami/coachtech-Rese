@@ -1,3 +1,9 @@
+main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20px 80px;
+}
+
 .admin {
   width: 40%;
   padding: 30px 80px;
@@ -9,12 +15,13 @@
   font-size: 24px;
 }
 
-.admin table{
+.admin table {
   width: 100%;
   margin-top: 50px;
-} 
+}
 
-.admin table th,td {
+.admin table th,
+td {
   padding: 5px;
 }
 
@@ -22,7 +29,7 @@
   width: 60%;
 }
 
-.admin input{
+.admin input {
   border: none;
   border-radius: 5px;
   padding: 10px;
@@ -40,6 +47,21 @@
   padding: 5px 10px;
   cursor: pointer;
   margin: 20px auto 0;
+}
+
+.admin__mail {
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+.admin__mail a {
+  text-decoration: none;
+  color: #fff;
+  background-color: rgb(53, 96, 246);
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 .validation__error-red {
